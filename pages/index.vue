@@ -2,7 +2,7 @@
 	<div class="container">
 		<div>
 			<Header />
-			<Teams v-for="team in teams" :key="team.team_id" :id="team.team_id" />
+			<div class="content"><Map class="map" /></div>
 		</div>
 	</div>
 </template>
@@ -23,8 +23,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
 	flex: 1;
+}
+
+.content {
+	padding: 40px;
+}
+
+.map {
+	margin-top: 5%;
+	width: 50%;
 }
 </style>
