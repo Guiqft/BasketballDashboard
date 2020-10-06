@@ -2,15 +2,25 @@
 	<div class="container">
 		<div>
 			<Header />
-			<Teams />
+			<Teams v-for="team in teams" :key="team.team_id" :id="team.team_id" />
 		</div>
 	</div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
+<script>
+export default {
+	async asyncData({ $api }) {
+		const teamsData = await $api.getTeams();
 
-export default Vue.extend({});
+		return { teamsData };
+	},
+
+	computed: {
+		teams() {
+			return this.teamsData;
+		}
+	}
+};
 </script>
 
 <style>

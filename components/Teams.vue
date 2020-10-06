@@ -9,7 +9,7 @@ export default {
 	name: "Teams",
 
 	props: {
-		id: { type: Number, default: "" }
+		id: { type: Number, default: 0 }
 	}
 };
 </script>
