@@ -33,8 +33,9 @@ export default {
 	align-items: center;
 	justify-content: center;
 	padding: 3px 7px 3px 7px;
-	background-color: #edede6;
 	min-width: 65px;
+	background-color: #edede6;
+
 	-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
 	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
@@ -42,9 +43,6 @@ export default {
 }
 
 .logoContainer {
-	-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
-	-moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
-	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -53,6 +51,10 @@ export default {
 	min-width: 50px;
 	background-color: #e0e0da;
 	border-radius: 20px 20px 0px 0px;
+
+	-webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.75);
 }
 
 .teamLogo {
@@ -67,5 +69,12 @@ export default {
 }
 
 .downArrow {
+	position: relative;
+	top: -3px;
+}
+
+.container:hover {
+	z-index: 10;
+	background-color: black;
 }
 </style>

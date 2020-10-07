@@ -4,7 +4,7 @@
 
 <script>
 import Vue from "vue";
-import TeamTooltip from "./TeamTooltip";
+import MapTeamTooltip from "./MapTeamTooltip";
 
 export default {
 	name: "MapTeam",
@@ -23,7 +23,7 @@ export default {
 		)[0];
 
 		// dinamically instance of the Team element
-		var ComponentClass = Vue.extend(TeamTooltip);
+		var ComponentClass = Vue.extend(MapTeamTooltip);
 		var instance = new ComponentClass({
 			propsData: {
 				team: this.$props.team
