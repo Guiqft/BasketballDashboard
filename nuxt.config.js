@@ -30,5 +30,5 @@ export default {
 	modules: [],
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
-	build: { transpile: ["vue-svg-map", "@svg-maps/usa"] }
+	build: { transpile: ["vue-svg-map", "@svg-maps/usa.counties"] }
 };

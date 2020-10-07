@@ -1,12 +1,13 @@
 <template>
 	<div>
-		<svg-map :map="customUSA" />
+		<svg-map :map="customUSA" :location-class="dynamicClass" />
+		<MapTeam />
 	</div>
 </template>
 
 <script>
 import { SvgMap } from "vue-svg-map";
-import Usa from "@svg-maps/usa";
+import UsaCounties from "@svg-maps/usa.counties";
 
 export default {
 	name: "Map",
@@ -16,52 +17,134 @@ export default {
 	data() {
 		return {
 			customUSA: {
-				...Usa,
-				label: "Custom map label",
-				locations: Usa.locations.map(location => {
-					console.log(location);
-
-					if (location.name === "Ohio") {
-						location.path.concat(
-							" 234.45L1024.84,235.74L1024.63,236.69L1025….24L1025.44,227.54L1025.84,229.84L1026.23,232.13z"
-						);
-					}
+				...UsaCounties,
+				label: "Basketball League Divisions",
+				locations: UsaCounties.locations.map(location => {
 					return location;
 				})
+			},
+
+			dynamicClass: location => {
+				switch (location.name.split(", ")[1]) {
+					case "NV":
+					case "CA":
+					case "AZ":
+					case "NM":
+						return `pacific_division ${location.name
+							.split(", ")[0]
+							.replace(/ /g, "")}`;
+						break;
+
+					case "WA":
+					case "OR":
+					case "ID":
+					case "MT":
+					case "WY":
+					case "UT":
+					case "CO":
+					case "ND":
+					case "SD":
+					case "NE":
+					case "KS":
+					case "OK":
+					case "MN":
+					case "IA":
+					case "MO":
+						return `northwest_division ${location.name
+							.split(", ")[0]
+							.replace(/ /g, "")}`;
+						break;
+
+					case "WI":
+					case "MI":
+					case "IL":
+					case "IN":
+					case "OH":
+					case "KY":
+					case "WV":
+						return `central_division ${location.name
+							.split(", ")[0]
+							.replace(/ /g, "")}`;
+						break;
+
+					case "TX":
+					case "AR":
+					case "LA":
+					case "MS":
+					case "TN":
+						return `southwest_division ${location.name
+							.split(", ")[0]
+							.replace(/ /g, "")}`;
+						break;
+
+					case "AL":
+					case "GA":
+					case "SC":
+					case "FL":
+					case "NC":
+					case "VA":
+					case "DC":
+						return `southeast_division ${location.name
+							.split(", ")[0]
+							.replace(/ /g, "")}`;
+						break;
+
+					case "ME":
+					case "VT":
+					case "NH":
+					case "MA":
+					case "CT":
+					case "RI":
+					case "NY":
+					case "NJ":
+					case "PA":
+					case "DE":
+					case "MD":
+						return `atlantic_division ${location.name
+							.split(", ")[0]
+							.replace(/ /g, "")}`;
+						break;
+
+					default:
+						return "hidden_state";
+						break;
+				}
 			}
 		};
 	}
 };
 </script>
 
-<style>
-.svg-map {
-	width: 100%;
-	height: auto;
-	stroke: none;
-	stroke-width: 1;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-}
-.svg-map__location {
-	fill: #a1d99b;
-	cursor: pointer;
-}
-.svg-map__location:focus,
-.svg-map__location:hover {
-	fill: #b8e2b3;
-	outline: 0;
-}
-.svg-map__location[aria-checked="true"] {
-	fill: #f4bc44;
+<style lang="scss">
+.pacific_division {
+	fill: green;
 }
 
-#ak,
-#hi {
-	display: none;
-}
-
-#oh {
+.pacific_division:hover {
 	fill: black;
+}
+
+.northwest_division {
+	fill: red;
+}
+
+.central_division {
+	fill: blue;
+}
+
+.southwest_division {
+	fill: purple;
+}
+
+.southeast_division {
+	fill: aqua;
+}
+
+.atlantic_division {
+	fill: brown;
+}
+
+.hidden_state {
+	display: none;
 }
 </style>

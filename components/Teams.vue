@@ -1,17 +1,16 @@
 <template>
-	<div>
-		<p>{{ id }}</p>
-	</div>
+	<div>SVG Tip</div>
 </template>
 
 <script lang="ts">
 export default {
 	name: "Teams",
-
 	props: {
-		id: { type: Number, default: 0 }
+		id: { type: Number, default: 0 },
+		positionTop: { type: Number, default: 0 },
+		positionLeft: { type: Number, default: 0 }
 	}
 };
 </script>
 
-<style></style>
+<style scoped></style>
