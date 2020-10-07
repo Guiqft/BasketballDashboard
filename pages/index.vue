@@ -2,7 +2,7 @@
 	<div class="container">
 		<div>
 			<Header />
-			<div class="content"><Map class="map" /></div>
+			<div class="content"><Map :teams="teams" class="map" /></div>
 		</div>
 	</div>
 </template>
@@ -33,7 +33,6 @@ export default {
 }
 
 .map {
-	margin-top: 5%;
-	width: 50%;
+	width: 65%;
 }
 </style>

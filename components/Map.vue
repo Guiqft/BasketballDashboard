@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<svg-map :map="customUSA" :location-class="dynamicClass" />
-		<MapTeam />
+		<MapTeam v-for="team in teams" :key="team.team_id" :team="team" />
 	</div>
 </template>
 
@@ -11,6 +11,9 @@ import UsaCounties from "@svg-maps/usa.counties";
 
 export default {
 	name: "Map",
+	props: {
+		teams: { type: Array, default: null }
+	},
 	components: {
 		SvgMap
 	},
@@ -20,6 +23,8 @@ export default {
 				...UsaCounties,
 				label: "Basketball League Divisions",
 				locations: UsaCounties.locations.map(location => {
+					if (location.name === "Madison, GA") location.name = "Atlanta, GA";
+
 					return location;
 				})
 			},
@@ -58,10 +63,10 @@ export default {
 					case "WI":
 					case "MI":
 					case "IL":
-					case "IN":
 					case "OH":
 					case "KY":
 					case "WV":
+					case "IN":
 						return `central_division ${location.name
 							.split(", ")[0]
 							.replace(/ /g, "")}`;
@@ -120,28 +125,24 @@ export default {
 	fill: green;
 }
 
-.pacific_division:hover {
-	fill: black;
-}
-
 .northwest_division {
-	fill: red;
+	fill: #0061a6;
 }
 
 .central_division {
-	fill: blue;
+	fill: #a6a511;
 }
 
 .southwest_division {
-	fill: purple;
+	fill: #a61311;
 }
 
 .southeast_division {
-	fill: aqua;
+	fill: #595904;
 }
 
 .atlantic_division {
-	fill: brown;
+	fill: #27465c;
 }
 
 .hidden_state {

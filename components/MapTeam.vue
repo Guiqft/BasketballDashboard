@@ -1,10 +1,10 @@
 <template>
-	<div class="team"></div>
+	<div :class="`team_${team.name}`"></div>
 </template>
 
 <script>
 import Vue from "vue";
-import Teams from "./Teams";
+import TeamTooltip from "./TeamTooltip";
 
 export default {
 	name: "MapTeam",
@@ -12,29 +12,40 @@ export default {
 		team: { type: Object, default: null }
 	},
 	mounted() {
-		const countie = document.getElementsByClassName("pacific_division Lea")[0];
+		// getting the countie element
+		const countie = document.getElementsByClassName(
+			`${this.$props.team.city.replace(/ /g, "")}`
+		)[0];
 
-		countie.setAttribute("ref", "Lea");
+		// Team div to insert Team element
+		const element = document.getElementsByClassName(
+			`team_${this.$props.team.name}`
+		)[0];
 
-		var rect = countie.getBoundingClientRect();
-
-		var ComponentClass = Vue.extend(Teams);
+		// dinamically instance of the Team element
+		var ComponentClass = Vue.extend(TeamTooltip);
 		var instance = new ComponentClass({
 			propsData: {
-				positionTop: rect.top,
-				positionLeft: rect.left
+				team: this.$props.team
 			}
 		});
 		instance.$mount();
 
-		const element = document.getElementsByClassName("team")[0];
-
-		element.style.position = "absolute";
-		element.style.top = rect.top + "px";
-		element.style.left = rect.left + "px";
-		element.appendChild(instance.$el);
-
-		console.log(element.style);
+		// getting the countie coordinate and positioning Team element into div
+		if (countie !== undefined) {
+			var rect = countie.getBoundingClientRect();
+			element.style.position = "absolute";
+			element.style.top = rect.top + "px";
+			element.style.left = rect.left + "px";
+			element.appendChild(instance.$el);
+		} else {
+			console.log(
+				`failed: ${this.$props.team.division.toLowerCase()}_division ${this.$props.team.city.replace(
+					/ /g,
+					""
+				)}`
+			);
+		}
 	}
 };
 </script>
