@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<a @click="selectTeam" class="container">
 		<div class="logoContainer">
 			<img :src="team.wikipedia_logo_url" class="teamLogo" />
 		</div>
@@ -7,14 +7,20 @@
 			<div class="teamName">{{ team.name }} ({{ team.key }})</div>
 		</div>
 		<img class="downArrow" src="~assets/DownArrow.svg" height="10px" />
-	</div>
+	</a>
 </template>
 
 <script lang="ts">
 export default {
-	name: "Teams",
+	name: "MapTeamTooltip",
 	props: {
-		team: { type: Object, default: null }
+		team: { type: Object, default: null },
+		store: { type: Object }
+	},
+	methods: {
+		selectTeam() {
+			this.store.commit("setSelectedTeam", this.team);
+		}
 	}
 };
 </script>
@@ -71,10 +77,5 @@ export default {
 .downArrow {
 	position: relative;
 	top: -3px;
-}
-
-.container:hover {
-	z-index: 10;
-	background-color: black;
 }
 </style>

@@ -3,6 +3,7 @@
 		<div>
 			<Header />
 			<div class="content"><Map :teams="teams" class="map" /></div>
+			<Team />
 		</div>
 	</div>
 </template>
@@ -15,9 +16,13 @@ export default {
 		return { teamsData };
 	},
 
+	mounted() {
+		this.$store.commit("setTeams", this.teamsData);
+	},
+
 	computed: {
 		teams() {
-			return this.teamsData;
+			return this.$store.state.teams;
 		}
 	}
 };

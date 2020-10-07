@@ -26,7 +26,8 @@ export default {
 		var ComponentClass = Vue.extend(MapTeamTooltip);
 		var instance = new ComponentClass({
 			propsData: {
-				team: this.$props.team
+				team: this.$props.team,
+				store: this.$store
 			}
 		});
 		instance.$mount();
