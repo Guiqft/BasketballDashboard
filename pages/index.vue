@@ -2,8 +2,10 @@
 	<div class="container">
 		<div>
 			<Header />
-			<div class="content"><Map :teams="teams" class="map" /></div>
-			<Team />
+			<div class="content">
+				<Map :teams="teams" class="map" />
+				<Team class="team" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -34,10 +36,15 @@ export default {
 }
 
 .content {
-	padding: 40px;
+	display: flex;
+	padding: 40px 40px 0px 40px;
 }
 
 .map {
-	width: 65%;
+	flex: 5;
+}
+
+.team {
+	flex: 3;
 }
 </style>

@@ -6,11 +6,10 @@
 		<div class="content">
 			<div class="teamName">{{ team.name }} ({{ team.key }})</div>
 		</div>
-		<img class="downArrow" src="~assets/DownArrow.svg" height="10px" />
 	</a>
 </template>
 
-<script lang="ts">
+<script>
 export default {
 	name: "MapTeamTooltip",
 	props: {
@@ -20,6 +19,7 @@ export default {
 	methods: {
 		selectTeam() {
 			this.store.commit("setSelectedTeam", this.team);
+			this.store.commit("setTeamColors", this.team);
 		}
 	}
 };
@@ -30,9 +30,11 @@ export default {
 	display: flex;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -100%);
+	transform: translate(-50%, -50%);
 	flex-direction: column;
 	align-items: center;
+
+	cursor: pointer;
 }
 .content {
 	display: flex;
@@ -72,10 +74,5 @@ export default {
 
 .teamName {
 	font-size: 0.8rem;
-}
-
-.downArrow {
-	position: relative;
-	top: -3px;
 }
 </style>
