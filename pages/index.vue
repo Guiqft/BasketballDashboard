@@ -1,12 +1,13 @@
 <template>
 	<div class="container">
-		<div>
+		<div class="content">
 			<Header />
-			<div class="content">
-				<Map :teams="teams" class="map" />
-				<Team class="team" />
+			<div class="map">
+				<Map :teams="teams" />
 			</div>
 		</div>
+
+		<Team class="team" :api="api2" />
 	</div>
 </template>
 
@@ -16,6 +17,10 @@ export default {
 		const teamsData = await $api.getTeams();
 
 		return { teamsData };
+	},
+
+	data({ $api }) {
+		return { api2: $api };
 	},
 
 	mounted() {
@@ -32,19 +37,23 @@ export default {
 
 <style scoped>
 .container {
+	display: flex;
 	flex: 1;
 }
 
 .content {
 	display: flex;
-	padding: 40px 40px 0px 40px;
+	flex-direction: column;
+	flex: 2;
 }
 
 .map {
 	flex: 5;
+	justify-content: center;
+	padding: 4% 4% 0px 4%;
 }
 
 .team {
-	flex: 3;
+	flex: 1;
 }
 </style>

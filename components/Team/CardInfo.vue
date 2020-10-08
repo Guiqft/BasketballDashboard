@@ -42,8 +42,12 @@
 export default {
 	name: "CardInfo",
 	props: {
-		team: { type: Object, default: {} },
+		team: { type: Array, default: {} },
 		colors: { type: Object, default: {} }
+	},
+
+	mounted() {
+		console.log(this.colors);
 	},
 	methods: {
 		getStatus() {
@@ -60,7 +64,7 @@ export default {
 	align-items: center;
 	flex-direction: column;
 	align-self: flex-start;
-	min-width: 40%;
+	min-width: 45%;
 	margin-bottom: 5%;
 	margin-left: 3%;
 	padding: 3% 0% 3% 0%;

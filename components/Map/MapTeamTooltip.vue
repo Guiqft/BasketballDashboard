@@ -16,6 +16,7 @@ export default {
 		team: { type: Object, default: null },
 		store: { type: Object }
 	},
+
 	methods: {
 		selectTeam() {
 			this.store.commit("setSelectedTeam", this.team);

@@ -1,6 +1,7 @@
 export const state = () => ({
 	teams: [],
 	selectedTeam: [],
+	selectedTeamStats: [],
 	teamColors: {
 		primary_color: null,
 		secondary_color: null,
@@ -16,6 +17,10 @@ export const mutations = {
 
 	setSelectedTeam(state, team) {
 		state.selectedTeam = team;
+	},
+
+	setSelectedTeamStats(state, stats) {
+		state.selectedTeamStats = stats;
 	},
 
 	setTeamColors(state, team) {

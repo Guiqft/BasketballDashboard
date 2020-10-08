@@ -17,12 +17,12 @@ export default {
 			`${this.$props.team.city.replace(/ /g, "")}`
 		)[0];
 
-		// Team div to insert Team element
+		// Team div to insert Team component
 		const element = document.getElementsByClassName(
 			`team_${this.$props.team.name}`
 		)[0];
 
-		// dinamically instance of the Team element
+		// dinamically instance of the Team component
 		var ComponentClass = Vue.extend(MapTeamTooltip);
 		var instance = new ComponentClass({
 			propsData: {
@@ -32,7 +32,7 @@ export default {
 		});
 		instance.$mount();
 
-		// getting the countie coordinate and positioning Team element into div
+		// getting the countie coordinate and positioning Team component into div
 		if (countie !== undefined) {
 			var rect = countie.getBoundingClientRect();
 			element.style.position = "absolute";
