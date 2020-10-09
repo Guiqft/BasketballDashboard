@@ -29,15 +29,9 @@ export default {
 		},
 		colors() {
 			return {
-<<<<<<< HEAD
-				primary_color: this.$store.state.teamColors.primary_color,
-				secondary_color: this.$store.state.teamColors.secondary_color,
-				tertiary_color: this.$store.state.teamColors.tertiary_color
-=======
 				primary_color: this.$store.state.selectedTeamColors.primary_color,
 				secondary_color: this.$store.state.selectedTeamColors.secondary_color,
 				tertiary_color: this.$store.state.selectedTeamColors.tertiary_color
->>>>>>> TeamsMap
 			};
 		}
 	}

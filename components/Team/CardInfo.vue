@@ -42,19 +42,9 @@
 export default {
 	name: "CardInfo",
 	props: {
-<<<<<<< HEAD
-		team: { type: Array, default: {} },
-		colors: { type: Object, default: {} }
-	},
-
-	mounted() {
-		console.log(this.colors);
-	},
-=======
 		team: { type: Array, default: [] },
 		colors: { type: Object, default: {} }
 	},
->>>>>>> TeamsMap
 	methods: {
 		getStatus() {
 			return this.team.active ? "Active" : "Deactive";

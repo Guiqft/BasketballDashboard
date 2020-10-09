@@ -58,15 +58,7 @@ export default {
 			`team_${this.$props.team.name}`
 		)[0];
 
-<<<<<<< HEAD
-		// dinamically instance of the Team component
-=======
-<<<<<<< Updated upstream
-		// dinamically instance of the Team element
-=======
 		// dinamic instance of the Team component
->>>>>>> Stashed changes
->>>>>>> TeamsMap
 		var ComponentClass = Vue.extend(MapTeamTooltip);
 		var instance = new ComponentClass({
 			propsData: {
