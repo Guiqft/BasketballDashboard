@@ -14,7 +14,10 @@ export default {
 	css: [],
 
 	// Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-	plugins: ["~/plugins/Service.ts"],
+	plugins: [
+		"~/plugins/Service.ts",
+		{ src: "~/plugins/ApexChart.ts", mode: "client" }
+	],
 
 	// Auto import components (https://go.nuxtjs.dev/config-components)
 	components: true,
@@ -30,5 +33,12 @@ export default {
 	modules: [],
 
 	// Build Configuration (https://go.nuxtjs.dev/config-build)
-	build: { transpile: ["vue-svg-map", "@svg-maps/usa.counties"] }
+	build: {
+		transpile: [
+			"vue-svg-map",
+			"@svg-maps/usa.counties",
+			"vue-apexcharts",
+			"apexcharts"
+		]
+	}
 };

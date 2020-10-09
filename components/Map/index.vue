@@ -8,6 +8,7 @@
 <script>
 import { SvgMap } from "vue-svg-map";
 import UsaCounties from "@svg-maps/usa.counties";
+import { classifyLocation, customLocation } from "./utils";
 
 export default {
 	name: "Map",
@@ -21,100 +22,10 @@ export default {
 		return {
 			customUSA: {
 				...UsaCounties,
-				label: "Basketball League Divisions",
-				locations: UsaCounties.locations.map(location => {
-					if (location.name === "Madison, GA") location.name = "Atlanta, GA";
-
-					return location;
-				})
+				label: "Basketball League Divisions"
 			},
 
-			dynamicClass: location => {
-				switch (location.name.split(", ")[1]) {
-					case "NV":
-					case "CA":
-					case "AZ":
-					case "NM":
-						return `pacific_division ${location.name
-							.split(", ")[0]
-							.replace(/ /g, "")}`;
-						break;
-
-					case "WA":
-					case "OR":
-					case "ID":
-					case "MT":
-					case "WY":
-					case "UT":
-					case "CO":
-					case "ND":
-					case "SD":
-					case "NE":
-					case "KS":
-					case "OK":
-					case "MN":
-					case "IA":
-					case "MO":
-						return `northwest_division ${location.name
-							.split(", ")[0]
-							.replace(/ /g, "")}`;
-						break;
-
-					case "WI":
-					case "MI":
-					case "IL":
-					case "OH":
-					case "KY":
-					case "WV":
-					case "IN":
-						return `central_division ${location.name
-							.split(", ")[0]
-							.replace(/ /g, "")}`;
-						break;
-
-					case "TX":
-					case "AR":
-					case "LA":
-					case "MS":
-					case "TN":
-						return `southwest_division ${location.name
-							.split(", ")[0]
-							.replace(/ /g, "")}`;
-						break;
-
-					case "AL":
-					case "GA":
-					case "SC":
-					case "FL":
-					case "NC":
-					case "VA":
-					case "DC":
-						return `southeast_division ${location.name
-							.split(", ")[0]
-							.replace(/ /g, "")}`;
-						break;
-
-					case "ME":
-					case "VT":
-					case "NH":
-					case "MA":
-					case "CT":
-					case "RI":
-					case "NY":
-					case "NJ":
-					case "PA":
-					case "DE":
-					case "MD":
-						return `atlantic_division ${location.name
-							.split(", ")[0]
-							.replace(/ /g, "")}`;
-						break;
-
-					default:
-						return "hidden_state";
-						break;
-				}
-			}
+			dynamicClass: location => classifyLocation(location)
 		};
 	}
 };
@@ -122,23 +33,23 @@ export default {
 
 <style lang="scss">
 .pacific_division {
-	fill: green;
+	fill: #0054a3;
 }
 
 .northwest_division {
-	fill: #0061a6;
+	fill: #003363;
 }
 
 .central_division {
-	fill: #a6a511;
+	fill: #007cf0;
 }
 
 .southwest_division {
-	fill: #a61311;
+	fill: #078a84;
 }
 
 .southeast_division {
-	fill: #595904;
+	fill: #0003b0;
 }
 
 .atlantic_division {

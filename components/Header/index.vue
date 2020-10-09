@@ -18,6 +18,6 @@ export default {
 	flex: 1;
 	flex-direction: row;
 	align-items: center;
-	margin-top: 1%;
+	margin-top: 0%;
 }
 </style>

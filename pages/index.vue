@@ -8,7 +8,7 @@
 				</div>
 			</div>
 
-			<Team class="team" :api="api2" />
+			<Team class="team" />
 		</div>
 	</div>
 </template>
@@ -19,10 +19,6 @@ export default {
 		const teamsData = await $api.getTeams();
 
 		return { teamsData };
-	},
-
-	data({ $api }) {
-		return { api2: $api };
 	},
 
 	mounted() {
@@ -67,8 +63,7 @@ export default {
 .map {
 	flex: 5;
 	justify-content: center;
-	align-items: center;
-	padding: 8% 4% 0% 4%;
+	padding: 4% 4% 0px 4%;
 }
 
 .team {
