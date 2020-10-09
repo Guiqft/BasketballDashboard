@@ -1,9 +1,14 @@
 <template>
-	<div class="container">
-		<div>
-			<Header />
-			<div class="content"><Map :teams="teams" class="map" /></div>
-			<Team />
+	<div class="backgroundImg">
+		<div class="container">
+			<div class="content">
+				<Header />
+				<div class="map">
+					<Map :teams="teams" />
+				</div>
+			</div>
+
+			<Team class="team" :api="api2" />
 		</div>
 	</div>
 </template>
@@ -14,6 +19,10 @@ export default {
 		const teamsData = await $api.getTeams();
 
 		return { teamsData };
+	},
+
+	data({ $api }) {
+		return { api2: $api };
 	},
 
 	mounted() {
@@ -29,15 +38,40 @@ export default {
 </script>
 
 <style scoped>
+.backgroundImg {
+	background: linear-gradient(
+			4deg,
+			rgba(41, 128, 185, 0.5) 0%,
+			rgba(109, 213, 250, 0.7) 10%,
+			rgba(255, 255, 255, 0.9) 100%
+		),
+		url(~assets/homeBackground.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	height: 100vh;
+}
+
 .container {
+	display: flex;
 	flex: 1;
 }
 
 .content {
-	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	flex: 2;
 }
 
 .map {
-	width: 65%;
+	flex: 5;
+	justify-content: center;
+	align-items: center;
+	padding: 8% 4% 0% 4%;
+}
+
+.team {
+	flex: 1;
 }
 </style>
