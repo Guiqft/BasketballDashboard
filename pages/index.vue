@@ -8,7 +8,9 @@
 				</div>
 			</div>
 
-			<Team class="team" />
+			<div class="team">
+				<Team v-show="true" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -58,12 +60,12 @@ export default {
 	display: flex;
 	flex-direction: column;
 	flex: 2;
+	max-width: 66%;
 }
 
 .map {
-	flex: 5;
 	justify-content: center;
-	padding: 4% 4% 0px 4%;
+	padding: 1% 4% 0px 4%;
 }
 
 .team {

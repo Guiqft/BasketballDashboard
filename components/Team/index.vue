@@ -1,9 +1,8 @@
 <template>
-	<!-- <div class="container" :style="`background-color: ${colors.primary_color}`"> -->
-	<div class="container" :style="`background-color: white`">
+	<div class="container">
 		<CardInfo :team="team" :colors="colors" />
 		<RadarChart />
-		<div class="title" :style="`color: ${colors.secondary_color}`">
+		<div class="title">
 			Team Stats
 		</div>
 	</div>
@@ -48,11 +47,14 @@ export default {
 	height: 100vh;
 	align-items: center;
 	flex-direction: column-reverse;
-	background: rgb(255, 255, 255);
+	border-left: 5px solid #2e79bf;
+
+	background: rgb(15, 32, 39);
 	background: linear-gradient(
-		62deg,
-		rgba(255, 255, 255, 1) 0%,
-		rgba(216, 212, 209, 1) 100%
+		4deg,
+		rgba(15, 32, 39, 1) 0%,
+		rgba(32, 58, 67, 1) 38%,
+		rgba(44, 83, 100, 1) 100%
 	);
 }
 
@@ -60,7 +62,7 @@ export default {
 	font-size: 1.6rem;
 	font-weight: 500;
 	margin-bottom: 4%;
-	filter: brightness(50%);
+	color: #fff;
 
 	text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
 }
