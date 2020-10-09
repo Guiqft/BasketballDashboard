@@ -1,5 +1,7 @@
 <template>
-	<div :class="`team_${team.name}`"></div>
+	<div class="container">
+		<div :class="`team_${team.name}`" />
+	</div>
 </template>
 
 <script>
@@ -11,18 +13,56 @@ export default {
 	props: {
 		team: { type: Object, default: null }
 	},
+	methods: {
+		onHover: function() {
+			const elements = document.querySelectorAll('div[class^="team_"]');
+			elements.forEach(element => (element.style.zIndex = 10));
+		}
+	},
+
 	mounted() {
+		// getting the locations to deal with same positions
+		const usedLocations = this.$store.state.usedLocations;
+
+		// team attr
+		const teamCity = `${this.$props.team.city.replace(/ /g, "")}`;
+		const teamDivision = `${this.$props.team.division.toLowerCase()}`;
+
+		// offset to changes the equal positions
+		var yOffset = 0;
+		var xOffset = 0;
+
+		// check if the team location are already in use
+		usedLocations.map(usedLocation => {
+			if (usedLocation !== undefined) {
+				if (usedLocation.includes(teamCity)) {
+					yOffset = Math.random() * -60;
+					xOffset = Math.random() * -60;
+				} else if (usedLocation.includes(teamDivision)) {
+					yOffset = Math.random() * -60;
+					xOffset = Math.random() * -60;
+				}
+			}
+		});
+
 		// getting the countie element
-		const countie = document.getElementsByClassName(
-			`${this.$props.team.city.replace(/ /g, "")}`
-		)[0];
+		let countie = document.getElementsByClassName(teamCity)[0];
+
+		// if countie doen't match, put on the division
+		if (countie === undefined) {
+			countie = document.getElementsByClassName(`${teamDivision}_division`)[0];
+		}
 
 		// Team div to insert Team element
 		const element = document.getElementsByClassName(
 			`team_${this.$props.team.name}`
 		)[0];
 
+<<<<<<< Updated upstream
 		// dinamically instance of the Team element
+=======
+		// dinamic instance of the Team component
+>>>>>>> Stashed changes
 		var ComponentClass = Vue.extend(MapTeamTooltip);
 		var instance = new ComponentClass({
 			propsData: {
@@ -35,20 +75,27 @@ export default {
 		// getting the countie coordinate and positioning Team element into div
 		if (countie !== undefined) {
 			var rect = countie.getBoundingClientRect();
-			element.style.position = "absolute";
-			element.style.top = rect.top + "px";
-			element.style.left = rect.left + "px";
+			element.style.position = "relative";
+			element.style.top = rect.top + yOffset + "px";
+			element.style.left = rect.left + xOffset + "px";
 			element.appendChild(instance.$el);
-		} else {
-			console.log(
-				`failed: ${this.$props.team.division.toLowerCase()}_division ${this.$props.team.city.replace(
-					/ /g,
-					""
-				)}`
-			);
+
+			this.$store.commit("addLocation", teamCity);
+			this.$store.commit("addLocation", teamDivision);
 		}
 	}
 };
 </script>
 
-<style></style>
+<style scoped>
+.container {
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: 1;
+}
+
+.container:hover {
+	z-index: 10;
+}
+</style>

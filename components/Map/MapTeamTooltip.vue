@@ -28,12 +28,11 @@ export default {
 <style scoped>
 .container {
 	display: flex;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -100%);
 	flex-direction: column;
 	align-items: center;
+	cursor: pointer;
 }
+
 .content {
 	display: flex;
 	align-items: center;

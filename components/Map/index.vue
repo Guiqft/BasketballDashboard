@@ -21,12 +21,19 @@ export default {
 		return {
 			customUSA: {
 				...UsaCounties,
+<<<<<<< Updated upstream
 				label: "Basketball League Divisions",
 				locations: UsaCounties.locations.map(location => {
 					if (location.name === "Madison, GA") location.name = "Atlanta, GA";
 
 					return location;
 				})
+=======
+				label: "Basketball League Divisions"
+				// locations: UsaCounties.locations.map(location =>
+				// 	customLocation(this.$store, location)
+				// )
+>>>>>>> Stashed changes
 			},
 
 			dynamicClass: location => {
