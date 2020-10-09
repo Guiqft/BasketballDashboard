@@ -1,3 +1,5 @@
+import { resetStyle, highlightStyle } from "./utils";
+
 export const state = () => ({
 	// Global Lists
 	teams: [],
@@ -25,6 +27,14 @@ export const mutations = {
 	},
 
 	setSelectedTeam(state, team) {
+		// changing the style of older selected team
+		if (state.selectedTeam.length !== 0) {
+			resetStyle(state.selectedTeam);
+		}
+
+		// changing the style of selected team to highlight him
+		highlightStyle(team);
+
 		state.selectedTeam = team;
 	},
 
@@ -62,6 +72,7 @@ export const mutations = {
 		}
 	},
 
+	// Mutation to store the team location
 	addLocation(state, location) {
 		state.usedLocations.push(location);
 	}

@@ -45,7 +45,7 @@ export default {
 }
 
 .southwest_division {
-	fill: #00478a;
+	fill: #078a84;
 }
 
 .southeast_division {

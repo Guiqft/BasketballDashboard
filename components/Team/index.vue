@@ -16,8 +16,11 @@ export default {
 		api: { type: Function }
 	},
 
-	async mounted() {
-		console.log(await this.$api.getTeamStats(1));
+	async asyncData() {
+		const teamStats = await this.$api.getTeamStats(this.team.team_id);
+		console.log(teamStats);
+
+		return { teamStats };
 	},
 
 	computed: {
