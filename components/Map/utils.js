@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 export const customLocation = location => {
+=======
+export const customLocation = (store, location) => {
+	store.commit("addLocation", location);
+
+	const usedLocations = store.state.usedLocations;
+	if (usedLocations.includes(location)) console.log(location.name);
+>>>>>>> TeamsMap
 	return location;
 };
 
