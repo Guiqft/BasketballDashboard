@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<CardInfo :team="team" :colors="colors" />
-		<RadarChart />
+		<CardInfo :team="team" :colors="colors"/>
+		<RadarChart :labels="labels"/>
 		<div class="title">
 			Team Stats
 		</div>
@@ -15,8 +15,10 @@ export default {
 		team() {
 			return this.$store.state.selectedTeam;
 		},
-		teamStats() {
-			return this.$store.state.selectedTeamStats;
+		labels() {
+			const labels = ['personal_fouls', 'assists', 'steals', 'blocked_shots', 'turnovers']
+			
+			return labels
 		},
 		colors() {
 			return {

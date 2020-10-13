@@ -89,9 +89,9 @@ export default {
 }
 
 .teamPicture > img {
-	width: 80px;
-	max-height: 80px;
-	min-height: 80px;
+	width: 12vh;
+	max-height: 12vh;
+	min-height: 12vh;
 }
 
 .teamName {

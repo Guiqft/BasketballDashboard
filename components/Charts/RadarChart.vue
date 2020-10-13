@@ -3,7 +3,7 @@
 		<apexcharts
 			class="chart"
 			type="radar"
-			height="170%"
+			height="300px"
 			:options="chartOptions"
 			:series="series"
 		/>
@@ -14,20 +14,44 @@
 export default {
 	name: "RadarChart",
 	props: {
-		// series: {	type:Object, default: {}}
+		labels: { type: Array, default: []}
 	},
-	data() {
-		return {
-			series: [
+
+	computed: {
+		values() {
+			const teamStats = this.$store.state.selectedTeamStats
+
+			const values = []
+
+			this.$props.labels.map(el => values.push(teamStats[el]))
+
+			return values
+		},
+
+		averages() {
+			const teamsAverages = this.$store.state.teamsAverages;
+
+			return  teamsAverages
+		},
+	
+		series() {
+			const series = [
 				{
-					name: "Series 1",
-					data: [80, 50, 30, 40, 100, 20]
+					name: "Team Stats",
+					data: this.values
 				},
 				{
-					name: "Series 2",
-					data: [20, 30, 40, 80, 20, 80]
+					name: "Average Stats",
+					data: this.averages
 				}
-			],
+			]
+
+			return series
+		}
+	},
+
+	data() {
+		return {
 			chartOptions: {
 				chart: {
 					background: "none",
@@ -42,32 +66,26 @@ export default {
 					},
 					foreColor: "#272b2c",
 					type: "radar",
-					toolbar: {
-						show: false
-					},
-					legend: {
-						show: true
-					},
 					stroke: {
 						width: 2
 					},
-					xaxis: {
-						categories: ["2011", "2012", "2013", "2014", "2015", "2016"]
+					y: 0.5,
+					toolbar: {
+						show: false
 					},
-					y: 0.5
 				},
-				labels: ["Apples", "Oranges", "Berries", "Grapes"],
+				labels: this.$props.labels,
 
 				markers: {
-					size: 0
+					size: 2
 				},
 
 				legend: {
 					show: false
 				},
 				fill: {
-					colors: undefined,
-					opacity: 0.8,
+					colors: [ "#003363","#078A84"],
+					opacity: 0.75,
 					type: "solid",
 					gradient: {
 						shade: "dark",
@@ -98,20 +116,23 @@ export default {
 				},
 
 				yaxis: {
-					show: false
+					show: false,
+					forceNiceScale: false,
 				},
 
 				xaxis: {
 					type: "category",
 					categories: [],
 					labels: {
+						//this remove '_' from label and capitalize it
+						formatter: (label) => label.replace('_', ' ').replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase()))),
 						style: {
-							colors: ["black", "black"],
+							colors: ["white", "white", "white", "white", "white", "white"],
 							fontSize: "12px",
 							fontFamily: "Helvetica, Arial, sans-serif",
 							fontWeight: 400,
 							cssClass: "apexcharts-xaxis-label"
-						}
+						},
 					}
 				}
 			}
@@ -122,5 +143,9 @@ export default {
 
 <style scoped>
 .chart {
+}
+
+.apexcharts-xaxis-label {
+	text-transform: capitalize!important;
 }
 </style>

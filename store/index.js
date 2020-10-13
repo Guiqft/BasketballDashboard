@@ -6,6 +6,7 @@ export const strict = false
 export const state = () => ({
 	// Global Lists
 	teams: [],
+	teamsAverages: [],
 
 	// Specific Team
 	selectedTeam: [],
@@ -25,6 +26,14 @@ export const mutations = {
 	// Teams Actions
 	setTeams (state, teamsData) {
 		state.teams = teamsData;
+	},
+
+	setTeamsAverages (state) {
+		const averages = ['personal_fouls', 'assists', 'steals', 'blocked_shots', 'turnovers']
+
+		this.$api.getTeamAverages(averages).then(averagesValues => {
+			state.teamsAverages = Object.values(averagesValues)
+		})
 	},
 
 	setSelectedTeam (state, team) {

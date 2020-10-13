@@ -26,10 +26,31 @@ export class Service {
 	}
 
 	/**
-	 * Fetches teams
+	 * Get teams
 	 */
 	public static async getTeams() {
-		return await Service.postQuery("SELECT * FROM teams");
+		const response = await Service.postQuery("SELECT * FROM teams");
+
+		return response;
+	}
+
+	/**
+	 * Get team averages
+	 */
+	public static async getTeamAverages(averagesList: Array<any>) {
+		const querySQL = ["SELECT "];
+
+		averagesList.forEach((average, idx, array) => {
+			if (idx !== array.length - 1)
+				querySQL.push(`AVG(${average}) as ${average},`);
+			else querySQL.push(`AVG(${average}) as ${average}`);
+		});
+
+		querySQL.push("FROM team_stats");
+
+		const responseData = await Service.postQuery(querySQL.join(" "));
+
+		return responseData[0];
 	}
 
 	/**

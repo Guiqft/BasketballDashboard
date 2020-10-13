@@ -25,6 +25,7 @@ export default {
 
 	mounted() {
 		this.$store.commit("setTeams", this.teamsData);
+		this.$store.commit("setTeamsAverages")
 	},
 
 	computed: {
