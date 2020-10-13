@@ -20,7 +20,8 @@ export default {
   methods: {
     selectTeam() {
       this.store.commit("setSelectedTeam", this.team);
-      this.store.commit("setTeamColors", this.team);
+      this.store.commit("setSelectedTeamColors", this.team);
+      this.store.commit("setSelectedTeamStats", this.team);
     },
   },
 };

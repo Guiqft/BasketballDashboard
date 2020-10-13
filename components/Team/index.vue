@@ -11,23 +11,12 @@
 <script>
 export default {
 	name: "Team",
-	props: {
-		api: { type: Function }
-	},
-
-	async asyncData() {
-		const teamStats = await this.$api.getTeamStats(this.team.team_id);
-		console.log(teamStats);
-
-		return { teamStats };
-	},
-
 	computed: {
 		team() {
 			return this.$store.state.selectedTeam;
 		},
 		teamStats() {
-			return this.$store.state.selectedTeam.teamStats;
+			return this.$store.state.selectedTeamStats;
 		},
 		colors() {
 			return {

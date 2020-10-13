@@ -1,10 +1,10 @@
 import { resetStyle, highlightStyle, formatColor } from "./utils";
 
+export const strict = false
+
 export const state = () => ({
 	// Global Lists
 	teams: [],
-	selectedTeam: [],
-	selectedTeamStats: [],
 
 	// Specific Team
 	selectedTeam: [],
@@ -22,27 +22,28 @@ export const state = () => ({
 
 export const mutations = {
 	// Teams Actions
-	setTeams(state, teamsData) {
+	setTeams (state, teamsData) {
 		state.teams = teamsData;
 	},
 
-	setSelectedTeam(state, team) {
+	setSelectedTeam (state, team) {
 		// changing the style of older selected team
 		if (state.selectedTeam.length !== 0) {
 			resetStyle(state.selectedTeam);
 		}
-
 		// changing the style of selected team to highlight him
 		highlightStyle(team);
 
 		state.selectedTeam = team;
 	},
 
-	setSelectedTeamStats(state, stats) {
-		state.selectedTeamStats = stats;
+	setSelectedTeamStats (state, team) {
+		this.$api.getTeamStats(team.team_id).then(stats => {
+			state.selectedTeamStats = stats;
+		});
 	},
 
-	setTeamColors(state, team) {
+	setSelectedTeamColors (state, team) {
 		state.selectedTeamColors.primary_color = formatColor(team.primary_color);
 		state.selectedTeamColors.secondary_color = formatColor(
 			team.secondary_color
@@ -54,7 +55,7 @@ export const mutations = {
 	},
 
 	// Mutation to store the team location
-	addLocation(state, location) {
+	addLocation (state, location) {
 		state.usedLocations.push(location);
 	}
 };

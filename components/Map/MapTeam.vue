@@ -23,18 +23,14 @@ export default {
     const teamDivision = `${this.$props.team.division.toLowerCase()}`;
 
     // offset to changes the equal positions
-    var yOffset = 0;
-    var xOffset = 0;
+    var offset = 0;
 
-    // check if the team location are already in use
+    // check if the team location are already in use]
+    // if are, set a random offset to positioning the team tooltip
     usedLocations.map((usedLocation) => {
       if (usedLocation !== undefined) {
-        if (usedLocation.includes(teamCity)) {
-          yOffset = Math.random() * -60;
-          xOffset = Math.random() * -60;
-        } else if (usedLocation.includes(teamDivision)) {
-          yOffset = Math.random() * -60;
-          xOffset = Math.random() * -60;
+        if (usedLocation.includes(teamCity) || usedLocation.includes(teamDivision)) {
+          offset = Math.random() * -60;
         }
       }
     });
@@ -66,8 +62,8 @@ export default {
     if (countie !== undefined) {
       var rect = countie.getBoundingClientRect();
       element.style.position = "relative";
-      element.style.top = rect.top + yOffset + "px";
-      element.style.left = rect.left + xOffset + "px";
+      element.style.top = rect.top + offset + "px";
+      element.style.left = rect.left + offset + "px";
       element.appendChild(instance.$el);
 
       // adding locations to list of useds
