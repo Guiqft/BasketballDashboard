@@ -42,7 +42,7 @@
 export default {
 	name: "CardInfo",
 	props: {
-		team: { type: Array, default: [] },
+		team: {default: []},
 		colors: { type: Object, default: {} }
 	},
 	methods: {

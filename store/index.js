@@ -1,5 +1,6 @@
 import { resetStyle, highlightStyle, formatColor } from "./utils";
 
+// this handle with error 'do not mutate vuex store state outside mutation handlers'
 export const strict = false
 
 export const state = () => ({
