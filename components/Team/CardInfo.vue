@@ -35,6 +35,14 @@
 				:color="colors.secondary_color"
 			/>
 		</div>
+
+		<div class="footer">
+			Win Rate 
+			<div class="winrate" :style="`color: ${colors.secondary_color}`">
+				{{teamWinRate.toFixed(2)}}
+				<div class="winratePercentage">%</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -44,6 +52,13 @@ export default {
 	props: {
 		team: {default: []},
 		colors: { type: Object, default: {} }
+	},
+	computed: {
+		teamWinRate() {
+			const teamStats = this.$store.state.selectedTeamStats
+
+			return (teamStats.wins / teamStats.games) * 100;
+		}
 	},
 	methods: {
 		getStatus() {
@@ -95,5 +110,22 @@ export default {
 	flex-direction: column;
 	list-style-type: none;
 	margin-top: 7%;
+}
+
+.footer {
+	margin-top: auto;
+	margin-bottom: auto;
+	text-align: center;
+}
+
+.winrate{
+	font-size: 5vh;
+	font-weight: 700;
+	filter: brightness(50%);
+}
+
+.winratePercentage {
+	color: black;
+	font-size: 2vh;
 }
 </style>

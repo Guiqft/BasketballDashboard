@@ -3,7 +3,7 @@
 		<apexcharts
 			class="chart"
 			type="radar"
-			height="110%"
+			height="170%"
 			:options="chartOptions"
 			:series="series"
 		/>
@@ -13,6 +13,9 @@
 <script>
 export default {
 	name: "RadarChart",
+	props: {
+		// series: {	type:Object, default: {}}
+	},
 	data() {
 		return {
 			series: [
@@ -27,7 +30,6 @@ export default {
 			],
 			chartOptions: {
 				chart: {
-					height: 350,
 					background: "none",
 					dropShadow: {
 						enabled: false,

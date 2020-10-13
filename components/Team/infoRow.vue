@@ -25,18 +25,18 @@ export default {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	margin-top: 2%;
+	margin-top: 4%;
 }
 
 .infoTitle {
 	font-weight: 500;
-	font-size: 0.75rem;
+	font-size: 1.3vh;
 	color: #4f4e4c;
 }
 
 .infoValue {
 	font-weight: 700;
-	font-size: 0.9rem;
+	font-size: 1.5vh;
 	filter: brightness(50%);
 }
 </style>

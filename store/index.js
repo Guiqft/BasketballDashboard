@@ -40,7 +40,7 @@ export const mutations = {
 
 	setSelectedTeamStats (state, team) {
 		this.$api.getTeamStats(team.team_id).then(stats => {
-			state.selectedTeamStats = stats;
+			state.selectedTeamStats = stats[0];
 		});
 	},
 
