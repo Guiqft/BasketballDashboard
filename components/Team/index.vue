@@ -22,7 +22,9 @@
 					</div>
 				</div>
 
-				Button
+				<Button class="button" title="See Players" width="80%">
+					A
+				</Button>
 			</div>
 		</div>
 	</div>
@@ -84,7 +86,7 @@ export default {
 	font-weight: 500;
 	font-size: 2vh;
 	margin-top: 4%;
-	margin-bottom: -2%;
+	margin-bottom: -10%;
 }
 
 .progress-list {
@@ -99,6 +101,7 @@ export default {
 
 .team-infos {
 	display: flex;
+	flex: 1;
 	align-items: center;
 	width: 100%;
 	margin-bottom: 4%;
@@ -106,15 +109,16 @@ export default {
 
 .team-chart-button{
 	display: flex;
-	flex-direction: column;
 	width: 100%;
-	flex: 1;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	margin-left: 1%;
 }
 
 .chart {
 	display: flex;
+	flex: 1;
 	flex-direction: column;
 	width: 100%;
 	align-items: center;
@@ -128,5 +132,10 @@ export default {
 	align-items: center;
 	justify-content: center;
 	margin: -20% 4% 0% 4%
+}
+
+.button {
+	flex: 1;
+	margin-top: 50%;
 }
 </style>

@@ -27,7 +27,8 @@ export default {
 	buildModules: [
 		// https://go.nuxtjs.dev/typescript
 		"@nuxt/typescript-build",
-		"@nuxtjs/svg"
+		"@nuxtjs/svg",
+		"@nuxtjs/vuetify",
 	],
 
 	// Modules (https://go.nuxtjs.dev/config-modules)

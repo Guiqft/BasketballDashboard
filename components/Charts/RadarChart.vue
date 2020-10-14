@@ -127,7 +127,7 @@ export default {
 						formatter: (label) => label.replace('_', ' ').replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase()))),
 						style: {
 							colors: ["white", "white", "white", "white", "white", "white"],
-							fontSize: "12px",
+							fontSize: "10px",
 							fontFamily: "Helvetica, Arial, sans-serif",
 							fontWeight: 400,
 							cssClass: "apexcharts-xaxis-label"

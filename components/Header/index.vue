@@ -2,7 +2,6 @@
 	<div class="container">
 		<Logo />
 		<SearchBar />
-		<Menu />
 	</div>
 </template>
 
@@ -16,10 +15,9 @@ export default {
 .container {
 	position: relative;
 	display: flex;
-	height: 19.7vh;
+	max-height: 19.7vh;
 	flex: 1;
 	flex-direction: row;
 	align-items: center;
-	margin-top: 0%;
 }
 </style>

@@ -58,13 +58,17 @@ export default {
 .container {
 	display: flex;
 	flex: 1;
+	width: 100%;
+	height: 100vh;
+	padding: 0!important;
+	margin: 0% 0% 0% 0%!important;
+	max-width: 2000px!important;
 }
 
 .content {
 	display: flex;
 	flex-direction: column;
-	flex: 2;
-	max-width: 66%;
+	flex: 3;
 }
 
 .map {
