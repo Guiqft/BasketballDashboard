@@ -16,7 +16,8 @@ export default {
 	// Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
 	plugins: [
 		"~/plugins/Service.ts",
-		{ src: "~/plugins/ApexChart.ts", mode: "client" }
+		{ src: "~/plugins/ApexChart.ts", mode: "client" },
+		{ src: "~/plugins/KProgress.js", ssr: false }
 	],
 
 	// Auto import components (https://go.nuxtjs.dev/config-components)
@@ -38,7 +39,8 @@ export default {
 			"vue-svg-map",
 			"@svg-maps/usa.counties",
 			"vue-apexcharts",
-			"apexcharts"
+			"apexcharts",
+			"k-progress"
 		]
 	}
 };

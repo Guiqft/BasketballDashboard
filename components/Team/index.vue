@@ -3,6 +3,9 @@
 		<div class="title">
 			Team Stats
 		</div>
+		<div class="progress-list">
+			<ProgressList />
+		</div>
 		<div class="teamInfos">
 			<CardInfo :team="team" :colors="colors"/>
 
@@ -56,6 +59,14 @@ export default {
 		rgba(32, 58, 67, 1) 38%,
 		rgba(44, 83, 100, 1) 100%
 	);
+}
+
+.progress-list {
+	display: flex;
+	width: 100%;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
 }
 
 .teamInfos {
