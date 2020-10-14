@@ -64,7 +64,6 @@ export default {
 						color: "#000",
 						opacity: 0.35
 					},
-					foreColor: "#272b2c",
 					type: "radar",
 					stroke: {
 						width: 2
@@ -84,8 +83,8 @@ export default {
 					show: false
 				},
 				fill: {
-					colors: [ "#003363","#078A84"],
-					opacity: 0.75,
+					colors: [ "#003363","#007cf0"],
+					opacity: 0.65,
 					type: "solid",
 					gradient: {
 						shade: "dark",

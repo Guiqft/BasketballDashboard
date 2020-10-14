@@ -71,7 +71,7 @@ export default {
 <style scoped>
 .container {
 	display: flex;
-	height: 50%;
+	height: 100%;
 	align-items: center;
 	flex-direction: column;
 	align-self: flex-start;

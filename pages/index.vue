@@ -7,7 +7,7 @@
 					<Map :teams="teams" />
 				</div>
 			</div>
-
+			
 			<div class="team">
 				<Team v-show="true" />
 			</div>
@@ -31,6 +31,9 @@ export default {
 	computed: {
 		teams() {
 			return this.$store.state.teams;
+		}, 
+		selectedTeam() {
+			return this.$store.state.selectedTeam;
 		}
 	}
 };
