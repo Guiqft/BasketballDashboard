@@ -13,7 +13,7 @@ export default {
     name: 'Button',
     props: {
         title: {type: String, default: 'title'},
-        width: {type: String, defualt: '100%'}
+        width: {type: String, defualt: '100%'},
     }
 }
 </script>
