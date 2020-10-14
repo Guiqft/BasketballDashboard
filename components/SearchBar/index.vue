@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<input v-model.trim="inputValue" class="dropdown-input" type="text" placeholder="Search for Team or Player" />
-        <DropDownList class="dropdown-list" v-show="inputValue" :lists="lists" :inputValue="inputValue"/>
+		<input ref="input" v-model.trim="inputValue" class="dropdown-input" type="text" placeholder="Search for Team or Player" />
+        <DropDownList @selected-item="resetInput" class="dropdown-list" v-show="inputValue" :lists="lists" :inputValue="inputValue"/>
 	</div>
 </template>
 
@@ -21,6 +21,13 @@ export default {
             return {teams, players}
         }
     },
+
+    methods:{
+        resetInput(){
+            this.$refs.input.value = ''
+            this.inputValue = ''
+        }
+    }
 }
 </script>
 

@@ -55,7 +55,9 @@ export default {
         },
 
         selectItem(item, idx){
-            console.log(item, idx)
+            if(idx === 'teams') this.$store.commit('setSelectedTeam', item)
+
+            this.$emit('selected-item')
         }
     }
 }
