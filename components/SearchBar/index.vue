@@ -39,7 +39,8 @@ export default {
 
 .dropdown-input{
     width: 100%;
-    height: 3vh;
+    height: 4vh;
+    font-size: 1.5vh;
     padding: 3%;
     border-radius: 5px;
     border: 1px solid #e6e6e6;
@@ -52,7 +53,6 @@ export default {
 	);
 
     font-weight: 600;
-    color: #504b4b!important;
     border: none!important;
 }
 
@@ -62,6 +62,6 @@ export default {
 
 .dropdown-list{
     position: absolute;
-    margin-top: 3.5vh;
+    margin-top: 4vh;
 }
 </style>

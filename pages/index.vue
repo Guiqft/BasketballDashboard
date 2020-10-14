@@ -2,7 +2,7 @@
 	<div class="backgroundImg">
 		<div class="container">
 			<div class="content">
-				<Header />
+				<Header class="header"/>
 				<div class="map">
 					<Map :teams="teams" />
 				</div>
@@ -47,6 +47,11 @@ export default {
 	-o-background-size: cover;
 	background-size: cover;
 	height: 100vh;
+}
+
+.header{
+	width: 100%;
+	flex: 1;
 }
 
 .container {

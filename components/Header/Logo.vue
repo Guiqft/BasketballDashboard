@@ -15,6 +15,5 @@ export default {};
 
 .logo {
 	width: 80px;
-	margin-left: 15%;
 }
 </style>
