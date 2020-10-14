@@ -1,10 +1,9 @@
 <template>
   <div class="button-container" :style="`width: ${width}`">
         <v-btn class="button" elevation="1" block >
-            {{title}}
-            <slot>
-
-            </slot>
+            <div class="title">{{title}}</div>
+ 
+            <slot class="child"/>
         </v-btn>
   </div>
 </template>
@@ -25,4 +24,14 @@ export default {
     flex: 1;
 }
 
+.title{
+    flex: 3;
+    width: 80%;
+    font-weight: 500;
+}
+
+.child {
+    flex: 1;
+    width: 100%;
+}
 </style>

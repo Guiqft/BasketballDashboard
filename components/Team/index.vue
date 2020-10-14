@@ -23,7 +23,7 @@
 				</div>
 
 				<Button class="button" title="See Players" width="80%">
-					A
+					<ArrowRight width="2vh" height="2vh"/>
 				</Button>
 			</div>
 		</div>
@@ -31,8 +31,13 @@
 </template>
 
 <script>
+import ArrowRight from '@/static/arrow-right.svg?inline'
+
 export default {
 	name: "Team",
+	components: {
+		ArrowRight
+	},
 	computed: {
 		team() {
 			return this.$store.state.selectedTeam;
