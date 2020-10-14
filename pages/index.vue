@@ -41,7 +41,7 @@ export default {
 			rgba(109, 213, 250, 0.7) 10%,
 			rgba(255, 255, 255, 0.9) 100%
 		),
-		url(~assets/homeBackground.jpg) no-repeat center center fixed;
+		url(~static/homeBackground.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;

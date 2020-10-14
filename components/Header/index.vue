@@ -21,4 +21,11 @@ export default {
 	align-items: center;
 }
 
+.logo{
+	flex: 1;
+}
+
+.search-bar{
+	flex: 1;
+}
 </style>
