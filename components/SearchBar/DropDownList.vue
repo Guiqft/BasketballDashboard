@@ -33,7 +33,7 @@ export default {
     },
     methods: {
         itemVisible(item, idx){
-            let currentName = (this.getName(item, idx)).toLowerCase()
+            let currentName = (`${this.getName(item, idx)} ${this.getInfo(item, idx)}`).toLowerCase()
             let currentInput = this.inputValue.toLowerCase()
 
             return currentName.includes(currentInput)
