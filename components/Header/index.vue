@@ -21,4 +21,13 @@ export default {
 	align-items: center;
 }
 
+.logo{
+	flex: 1;
+	margin-left: 7%;
+}
+
+.search-bar{
+	flex: 1;
+	margin-right: 5%;
+}
 </style>

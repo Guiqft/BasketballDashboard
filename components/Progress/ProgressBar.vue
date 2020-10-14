@@ -3,7 +3,7 @@
     <div class="title">{{title.replace('_', ' ')}}</div>
     <k-progress 
       active 
-      :percent="(value / max) * 100"
+      :percent="(Number(value) / Number(max)) * 100"
       :color="['#0054a3', '#007cf0']" 
       bg-color="#09bab2" 
       :format="format"
@@ -17,8 +17,8 @@ export default {
     name: 'ProgressBar',
     props: {
       title: {type: String, default: 'title'},
-      value: {type: Number, default: 70},
-      max: {type: Number, default: 100}
+      value: {type: String, default: '70'},
+      max: {type: String, default: '100'}
     },
     methods: {
       format(percent){

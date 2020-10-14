@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<img class="logo" src="~assets/Logo.svg" />
+		<img class="logo" src="~static/Logo.svg" />
 	</div>
 </template>
 
@@ -15,6 +15,5 @@ export default {};
 
 .logo {
 	width: 80px;
-	margin-left: 15%;
 }
 </style>
