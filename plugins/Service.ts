@@ -63,6 +63,15 @@ export class Service {
 
 		return response;
 	}
+
+	/**
+	 * Get players
+	 */
+	public static async getPlayers() {
+		const response = await Service.postQuery("SELECT * FROM players");
+
+		return response;
+	}
 }
 
 export default (context: any, inject: any) => {

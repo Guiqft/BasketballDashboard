@@ -19,13 +19,18 @@ export const state = () => ({
 	},
 
 	// Map Locations
-	usedLocations: []
+	usedLocations: [],
+
+	//Players
+	players: []
 });
 
 export const mutations = {
-	// Teams Actions
-	setTeams (state, teamsData) {
-		state.teams = teamsData;
+	/*
+		Teams Actions
+	*/
+	setTeams (state) {
+		this.$api.getTeams().then(teamsData => state.teams = teamsData)
 	},
 
 	setTeamsAverages (state) {
@@ -67,5 +72,12 @@ export const mutations = {
 	// Mutation to store the team location
 	addLocation (state, location) {
 		state.usedLocations.push(location);
-	}
+	},
+
+	/*
+		Players Actions
+	*/
+	setPlayers (state) {
+		this.$api.getPlayers().then(playersData => state.players = playersData)
+	},
 };

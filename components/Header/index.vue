@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<Logo />
-		<SearchBar />
+		<Logo class="logo"/>
+		<SearchBar class="search-bar"/>
 	</div>
 </template>
 
@@ -20,4 +20,5 @@ export default {
 	flex-direction: row;
 	align-items: center;
 }
+
 </style>

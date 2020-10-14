@@ -7,9 +7,8 @@
 					<Map :teams="teams" />
 				</div>
 			</div>
-			
 			<div class="team">
-				<Team v-show="true" />
+				<Team :key="selectedTeam.team_id" v-show="selectedTeam.name" />
 			</div>
 		</div>
 	</div>
@@ -17,14 +16,9 @@
 
 <script>
 export default {
-	async asyncData({ $api }) {
-		const teamsData = await $api.getTeams();
-
-		return { teamsData };
-	},
-
 	mounted() {
-		this.$store.commit("setTeams", this.teamsData);
+		this.$store.commit("setTeams");
+		this.$store.commit("setPlayers");
 		this.$store.commit("setTeamsAverages")
 	},
 
