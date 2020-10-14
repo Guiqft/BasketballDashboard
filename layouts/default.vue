@@ -15,6 +15,7 @@ html {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
+	overflow: hidden;
 }
 
 *,
@@ -22,5 +23,10 @@ html {
 *::after {
 	box-sizing: border-box;
 	margin: 0;
+}
+
+.k-progress-text{
+	font-weight: 600;
+  	color: white!important
 }
 </style>

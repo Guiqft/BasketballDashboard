@@ -69,7 +69,7 @@ export default {
 
 .map {
 	justify-content: center;
-	padding: 1% 4% 0px 4%;
+	margin: 0% 4% 0px 4%;
 }
 
 .team {

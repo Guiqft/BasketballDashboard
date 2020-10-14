@@ -3,18 +3,26 @@
 		<div class="title">
 			Team Stats
 		</div>
+
+		<div class="list-title">
+			made / attempts
+		</div>
 		<div class="progress-list">
 			<ProgressList />
 		</div>
-		<div class="teamInfos">
+		<div class="team-infos">
 			<CardInfo :team="team" :colors="colors"/>
 
-			<div class="chart">
-				<RadarChart :labels="labels"/>
-				<div class="legend">
-					<ChartLegend :title="team.name" color="#003363" />
-					<ChartLegend title="Average" color="#007cf0"/>
+			<div class="team-chart-button">
+				<div class="chart">
+					<RadarChart :labels="labels"/>
+					<div class="legend">
+						<ChartLegend :title="team.name" color="#003363" />
+						<ChartLegend title="Average" color="#007cf0"/>
+					</div>
 				</div>
+
+				Button
 			</div>
 		</div>
 	</div>
@@ -61,19 +69,48 @@ export default {
 	);
 }
 
+.title {
+	margin-top: 10%;
+	margin-bottom: 2%;
+	font-size: 3.5vh;
+	font-weight: 500;
+	color: #fff;
+
+	text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+.list-title {
+	color: rgb(226, 221, 221);
+	font-weight: 500;
+	font-size: 2vh;
+	margin-top: 4%;
+	margin-bottom: -2%;
+}
+
 .progress-list {
 	display: flex;
 	width: 100%;
+	max-width: 80%;
+	margin-left: 5%;
 	flex: 1;
 	align-items: center;
 	justify-content: center;
 }
 
-.teamInfos {
+.team-infos {
 	display: flex;
 	align-items: center;
 	width: 100%;
 	margin-bottom: 4%;
+}
+
+.team-chart-button{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
 }
 
 .chart {
@@ -91,15 +128,5 @@ export default {
 	align-items: center;
 	justify-content: center;
 	margin: -20% 4% 0% 4%
-}
-
-.title {
-	margin-top: 4%;
-	margin-bottom: 4%;
-	font-size: 1.6rem;
-	font-weight: 500;
-	color: #fff;
-
-	text-shadow: 3px 2px 3px rgba(0, 0, 0, 0.2);
 }
 </style>

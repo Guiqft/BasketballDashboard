@@ -1,21 +1,48 @@
 <template>
   <div class="bar-container">
-    <k-progress :percent="70" :color="['#40a9ff', '#5cdbd3']" bg-color="#d9f7be" class="bar"/>
+    <div class="title">{{title.replace('_', ' ')}}</div>
+    <k-progress 
+      active 
+      :percent="(value / max) * 100"
+      :color="['#0054a3', '#007cf0']" 
+      bg-color="#09bab2" 
+      :format="format"
+      class="bar"
+    />
   </div>
 </template>
 
 <script>
 export default {
-    name: 'ProgressBar'
+    name: 'ProgressBar',
+    props: {
+      title: {type: String, default: 'title'},
+      value: {type: Number, default: 70},
+      max: {type: Number, default: 100}
+    },
+    methods: {
+      format(percent){
+        return `${percent.toFixed(2)}%`
+      }
+    }
 }
 </script>
 
 <style scoped>
 .bar-container {
     display: flex;
+    flex-direction: column;
     flex: 1;
     width: 100%;
 }
+
+.title {
+  font-weight: 600;
+  font-size: 2vh;
+  color: white;
+  text-transform: capitalize;
+}
+
 .bar {
     width: 100%;
 }
