@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container" :style="`border-left: 5px solid ${colors.primary_color};`">
 		<div class="teamPicture">
 			<img :src="team.wikipedia_logo_url" />
 		</div>

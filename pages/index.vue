@@ -8,7 +8,7 @@
 				</div>
 			</div>
 			<div class="team">
-				<Team :key="selectedTeam.team_id" v-show="selectedTeam.name" />
+				<Team :key="selectedTeam.team_id" v-show="selectedTeam.name" v-if="selectedTeam.name"/>
 			</div>
 		</div>
 	</div>
@@ -37,9 +37,8 @@ export default {
 .backgroundImg {
 	background: linear-gradient(
 			4deg,
-			rgba(41, 128, 185, 0.5) 0%,
-			rgba(109, 213, 250, 0.7) 10%,
-			rgba(255, 255, 255, 0.9) 100%
+			rgba(201,214,255, 0.5) 0%,
+			rgba(226,226,226,1) 100%
 		),
 		url(~static/homeBackground.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;

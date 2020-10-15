@@ -1,5 +1,10 @@
 <template>
-	<div class="container">
+	<div 
+		class="container"
+		:style="`
+			border-left: 5px solid ${colors.primary_color};
+		`"
+	>
 		<div class="title">
 			Team Stats
 		</div>
@@ -8,17 +13,17 @@
 			made / attempts
 		</div>
 		<div class="progress-list">
-			<ProgressList />
+			<ProgressList :colors="colors"/>
 		</div>
 		<div class="team-infos">
 			<CardInfo :team="team" :colors="colors"/>
 
 			<div class="team-chart-button">
 				<div class="chart">
-					<RadarChart :labels="labels"/>
+					<RadarChart :labels="labels" :colors="colors"/>
 					<div class="legend">
-						<ChartLegend :title="team.name" color="#003363" />
-						<ChartLegend title="Average" color="#007cf0"/>
+						<ChartLegend :title="team.name" :color="colors.primary_color" />
+						<ChartLegend title="Average" color="rgba(0, 0, 0, 0.75)"/>
 					</div>
 				</div>
 
@@ -58,15 +63,8 @@ export default {
 	height: 100vh;
 	flex-direction: column;
 	align-items: center;
-	border-left: 5px solid #2e79bf;
-
-	background: rgb(15, 32, 39);
-	background: linear-gradient(
-		4deg,
-		rgba(15, 32, 39, 1) 0%,
-		rgba(32, 58, 67, 1) 38%,
-		rgba(44, 83, 100, 1) 100%
-	);
+	background: rgb(0,0,0);
+	background: linear-gradient(4deg, rgba(0,0,0,1) 0%, rgba(67,67,67,1) 100%);
 }
 
 .title {

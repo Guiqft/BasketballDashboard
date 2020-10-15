@@ -4,8 +4,8 @@
     <k-progress 
       active 
       :percent="(Number(value) / Number(max)) * 100"
-      :color="['#0054a3', '#007cf0']" 
-      bg-color="#09bab2" 
+      :color="[colors.secondary_color, colors.primary_color]" 
+      bg-color="#e6e6e6" 
       :format="format"
       class="bar"
     />
@@ -18,7 +18,8 @@ export default {
     props: {
       title: {type: String, default: 'title'},
       value: {type: String, default: '70'},
-      max: {type: String, default: '100'}
+      max: {type: String, default: '100'},
+		  colors: { type: Object, default: {} }
     },
     methods: {
       format(percent){

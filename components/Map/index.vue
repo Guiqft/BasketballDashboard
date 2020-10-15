@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<svg-map :map="customUSA" :location-class="dynamicClass" />
+		<svg-map :map="customUSA" :location-class="dynamicClass"/>
 		<MapTeam v-for="team in teams" :key="team.team_id" :team="team" />
 	</div>
 </template>
@@ -33,27 +33,27 @@ export default {
 
 <style lang="scss">
 .pacific_division {
-	fill: #0054a3;
+	fill: #0D0D0D;
 }
 
 .northwest_division {
-	fill: #003363;
+	fill:#595959;
 }
 
 .central_division {
-	fill: #007cf0;
+	fill:#0D0D0D;
 }
 
 .southwest_division {
-	fill: #078a84;
+	fill:#D9D9D9;
 }
 
 .southeast_division {
-	fill: #0003b0;
+	fill:#171E26;
 }
 
 .atlantic_division {
-	fill: #27465c;
+	fill: white;
 }
 
 .hidden_state {
