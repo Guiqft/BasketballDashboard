@@ -9,12 +9,12 @@
     @mouseover="hasStats ? (showStats = true) : (showStats = false)"
     @mouseleave="showStats = false"
   >
-      <div class="card-content" v-if="!showStats">
+      <div class="card-content" >
           <div class="player-img">
-          <img :src="player.photo_url" />
+          <img :src="player.photo_url" :style="`opacity: ${showStats ? '0.2' : '1'}`"/>
         </div>
 
-        <div class="player-infos">
+        <div class="player-infos" :style="`opacity: ${showStats ? '0.2' : '1'}`">
           <div class="player-infos-content">
             <div class="player-name">
               {{player.first_name}} {{player.last_name}}
@@ -27,11 +27,11 @@
 
           <div class="player-age">
             {{ getAge(player.birth_date) }}
-            <div class="div">yo</div>
+            <div class="div">{{hasStats}}</div>
           </div>
         </div>
 
-        <div class="player-stats">
+        <div class="player-stats" :style="`opacity: ${showStats ? '0.1' : '1'}`">
           <div class="player-height">
             <div class="stat-title">Height</div>
             <div class="stat-value">{{player.height}}</div>
@@ -44,12 +44,12 @@
             <div class="stat-unity">pounds</div>
           </div>
         </div>
+
+      <div class="compare-button" v-if="showStats" @click="selectPlayer"/>
+        <div class="button-title" v-if="showStats" :style="`color: ${teamColors.primary_color}`" @click="selectPlayer">
+          Compare
         </div>
-
-        
       </div>
-
-
   </div>
 </template>
 
@@ -60,7 +60,7 @@ export default {
     name: 'PlayerCard',
     props: {
         player: {type: Object, default: {}},
-        stats: {type: Object, default: {}}
+        stats: {type: Array, default: []}
     },
     data() {
       return {
@@ -99,6 +99,10 @@ export default {
 
         }
         
+      },
+
+      selectPlayer(){
+        this.$store.commit('setFirstPlayer', this.$props.player)
       }
     }
 }
@@ -218,5 +222,31 @@ export default {
 .stat-unity{
   font-weight: 300;
   font-size: 1.3vh;
+}
+
+.compare-button{
+  display: flex;
+  position: fixed;
+  cursor: pointer;
+  bottom: 0;
+  margin-left: 2vw;
+  background-color: white;
+  height: 5vh;
+  width: 110%;
+  opacity: 1!important;
+  z-index: 8;
+
+  -webkit-box-shadow: 0px -7px 170px 184px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -7px 170px 184px rgba(0,0,0,0.75);
+  box-shadow: 0px -7px 170px 184px rgba(0,0,0,0.75);
+}
+
+.button-title{
+  z-index: 9;
+  font-weight: 600;
+  font-size: 2vh;
+  cursor: pointer;
+  margin-left: 17%;
+  margin-bottom: 5%;
 }
 </style>

@@ -23,7 +23,9 @@ export const state = () => ({
 
 	// Players
 	players: [],
-	playersStats: []
+	playersStats: [],
+	firstPlayer: [],
+	secondPlayer: []
 });
 
 export const mutations = {
@@ -86,4 +88,8 @@ export const mutations = {
 	setPlayersStats (state) {
 		this.$api.getPlayersStats().then(statsData => state.playersStats = statsData)
 	},
+
+	setFirstPlayer (state, player) {
+		state.firstPlayer = player
+	}
 };
