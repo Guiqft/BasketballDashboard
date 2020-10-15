@@ -77,27 +77,19 @@ export default {
 				labels: this.$props.labels,
 
 				markers: {
-					size: 2
+					size: 0
 				},
 
 				legend: {
 					show: false
 				},
+				stroke: {
+					colors: [ "#000", this.$props.colors.primary_color],
+				},
 				fill: {
 					colors: [ "#000", this.$props.colors.primary_color],
-					opacity: 0.75,
-					type: "solid",
-					gradient: {
-						shade: "dark",
-						type: "horizontal",
-						shadeIntensity: 0.1,
-						gradientToColors: undefined,
-						inverseColors: true,
-						opacityFrom: 0.2,
-						opacityTo: 0.8,
-						stops: [0, 50, 100],
-						colorStops: []
-					}
+					opacity: [0.35, 0.35],
+					type: ['solid', 'solid']
 				},
 				dataLabels: {
 					enabled: false
