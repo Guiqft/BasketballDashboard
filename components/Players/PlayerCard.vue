@@ -5,9 +5,12 @@
       background-color: ${teamColors.primary_color};
       border-left: 0.4vw solid ${teamColors.secondary_color}
     `"
+
+    @mouseover="hasStats ? (showStats = true) : (showStats = false)"
+    @mouseleave="showStats = false"
   >
-      <div class="card-content">
-        <div class="player-img">
+      <div class="card-content" v-if="!showStats">
+          <div class="player-img">
           <img :src="player.photo_url" />
         </div>
 
@@ -27,7 +30,26 @@
             <div class="div">yo</div>
           </div>
         </div>
+
+        <div class="player-stats">
+          <div class="player-height">
+            <div class="stat-title">Height</div>
+            <div class="stat-value">{{player.height}}</div>
+            <div class="stat-unity">inches</div>
+          </div>
+
+          <div class="player-weight">
+            <div class="stat-title">Weight</div>
+            <div class="stat-value">{{player.weight}}</div>
+            <div class="stat-unity">pounds</div>
+          </div>
+        </div>
+        </div>
+
+        
       </div>
+
+
   </div>
 </template>
 
@@ -37,11 +59,20 @@ import moment from 'moment'
 export default {
     name: 'PlayerCard',
     props: {
-        player: {type: Object, default: {}}
+        player: {type: Object, default: {}},
+        stats: {type: Object, default: {}}
+    },
+    data() {
+      return {
+        showStats: false,
+      };
     },
     computed: {
       teamColors() {
         return this.$store.state.selectedTeamColors;
+      },
+      hasStats(){
+        return (this.stats.length > 0)
       }
     },
     methods: {
@@ -152,5 +183,40 @@ export default {
   font-weight: 300;
   color: #e6e6e6;
   margin-left: 1vw;
+}
+
+.player-stats{
+  display: flex;
+  flex: 1;
+  width: 100%;
+  margin-lefT: 5%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0% 10% 0% 10%
+}
+
+.player-height{
+  flex: 1;
+  border-right: 1px solid #e6e6e6;
+  text-align: center;
+}
+
+.player-weight{
+  flex: 1;
+  text-align: center;
+}
+
+.stat-title{
+  margin-bottom: 5%;
+}
+
+.stat-value{
+  font-size: 3vh;
+  font-weight: 500;
+}
+
+.stat-unity{
+  font-weight: 300;
+  font-size: 1.3vh;
 }
 </style>

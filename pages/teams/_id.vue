@@ -3,8 +3,8 @@
 		<TeamLogo />
 		<div class="team-content">
 			<div class="header">
-				<ButtonBack class="back-button" />
-				<div class="title">{{ team.name }} Players</div>
+				<ButtonBack class="back-button" :color="teamColors.primary_color"/>
+				<div class="title" :style="`color: ${teamColors.primary_color}`">{{ team.name }} Players</div>
 			</div>
 
 			<PlayersGrid :players="players" class="grid" />
@@ -64,8 +64,10 @@ export default {
 }
 
 .title {
-	margin-left: 35%;
+	margin-left: 30%;
+    font-weight: 600;
 	font-size: 3vh;
+    filter: brightness(100%)
 }
 
 .grid {
