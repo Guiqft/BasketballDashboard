@@ -5,6 +5,7 @@
 			<div class="header">
 				<ButtonBack class="back-button" :color="teamColors.primary_color"/>
 				<div class="title" :style="`color: ${teamColors.primary_color}`">{{ team.name }} Players</div>
+				<Logo class="logo"/>
 			</div>
 
 			<PlayersGrid :players="players" class="grid" />
@@ -59,6 +60,7 @@ export default {
 
 .header {
 	display: flex;
+	flex: 1;
 	width: 100%;
 	align-items: center;
 }
@@ -68,6 +70,10 @@ export default {
     font-weight: 600;
 	font-size: 3vh;
     filter: brightness(100%)
+}
+
+.logo {
+	margin-left: 30%;
 }
 
 .grid {

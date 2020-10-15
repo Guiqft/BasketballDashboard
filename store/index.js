@@ -83,7 +83,7 @@ export const mutations = {
 		this.$api.getPlayers().then(playersData => state.players = playersData)
 	},
 
-	setPlayersStats (state, team_id) {
-		this.$api.getPlayersStats(team_id).then(statsData => state.playersStats = statsData)
+	setPlayersStats (state) {
+		this.$api.getPlayersStats().then(statsData => state.playersStats = statsData)
 	},
 };

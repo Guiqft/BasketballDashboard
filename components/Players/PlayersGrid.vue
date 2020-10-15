@@ -19,7 +19,7 @@ export default {
             return this.$store.state.selectedTeam
         },
         playersStats(){
-            return this.$store.state.playersStats
+            return this.$store.state.playersStats.filter(stat => stat.team_id === this.team.team_id)
         }
     },
     methods:{
