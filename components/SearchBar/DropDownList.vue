@@ -55,9 +55,10 @@ export default {
         },
 
         selectItem(item, idx){
-            if(idx === 'teams') this.$store.commit('setSelectedTeam', item)
-
-            this.$emit('selected-item')
+            if(idx === 'teams') {
+                this.$store.commit('setSelectedTeam', item)
+                this.$store.commit('setSelectedTeamColors', item)
+            }
         }
     }
 }

@@ -23,11 +23,11 @@ export default {
 
 .logo{
 	flex: 1;
-	margin-left: 7%;
 }
 
 .search-bar{
 	flex: 1;
-	margin-right: 5%;
+	margin-right: auto;
+	margin-left: auto;
 }
 </style>

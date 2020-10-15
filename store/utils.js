@@ -30,8 +30,8 @@ export const highlightStyle = team => {
 	)[0];
 
 	selectedTeamContainer.style.zIndex = 10;
-	selectedTeamLogo.style.boxShadow = "0px 0px 5px 4px rgba(11, 28, 94,1)";
-	selectedTeamContent.style.boxShadow = "0px 0px 5px 4px rgba(11, 28, 94,1)";
+	selectedTeamLogo.style.boxShadow = `0px 0px 5px 4px #${team.primary_color}`;
+	selectedTeamContent.style.boxShadow = `0px 0px 5px 4px #${team.primary_color}`;
 };
 
 export const formatColor = color => {

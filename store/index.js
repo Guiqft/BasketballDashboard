@@ -12,10 +12,10 @@ export const state = () => ({
 	selectedTeam: [],
 	selectedTeamStats: [],
 	selectedTeamColors: {
-		primary_color: null,
-		secondary_color: null,
-		tertiary_color: null,
-		quaternary_color: null
+		primary_color: 'black',
+		secondary_color: 'black',
+		tertiary_color: 'black',
+		quaternary_color: 'black'
 	},
 
 	// Map Locations

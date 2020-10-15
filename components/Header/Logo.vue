@@ -1,11 +1,24 @@
 <template>
 	<div class="container">
-		<img class="logo" src="~static/Logo.svg" />
+		<ArrowLeft class="logo" :fill="colors.primary_color"/>
 	</div>
 </template>
 
 <script>
-export default {};
+import ArrowLeft from '@/static/logo.svg?inline'
+
+export default {
+	name: 'Logo',
+	components: {
+		ArrowLeft
+	},
+	computed: {
+		colors(){
+			return this.$store.state.selectedTeamColors
+		}
+	}
+
+};
 </script>
 
 <style scoped>
@@ -14,6 +27,6 @@ export default {};
 }
 
 .logo {
-	width: 80px;
+	height: 5vh;
 }
 </style>

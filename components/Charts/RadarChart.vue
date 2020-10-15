@@ -88,7 +88,7 @@ export default {
 				},
 				fill: {
 					colors: [ "#000", this.$props.colors.primary_color],
-					opacity: [0.35, 0.35],
+					opacity: [0.35, 0.45],
 					type: ['solid', 'solid']
 				},
 				dataLabels: {
