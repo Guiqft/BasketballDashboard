@@ -14,7 +14,8 @@
 export default {
 	name: "RadarChart",
 	props: {
-		labels: { type: Array, default: []}
+		labels: { type: Array, default: []},
+		colors: { type: Object, default: {} }
 	},
 
 	computed: {
@@ -68,7 +69,7 @@ export default {
 					stroke: {
 						width: 2
 					},
-					y: 0.5,
+					y: 1,
 					toolbar: {
 						show: false
 					},
@@ -83,8 +84,8 @@ export default {
 					show: false
 				},
 				fill: {
-					colors: [ "#003363","#007cf0"],
-					opacity: 0.65,
+					colors: [ "#000", this.$props.colors.primary_color],
+					opacity: 0.75,
 					type: "solid",
 					gradient: {
 						shade: "dark",

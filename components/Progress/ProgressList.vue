@@ -1,12 +1,22 @@
 <template>
     <div class="list-container">
-        <ProgressBar v-for="(label, idx) in labels" :key="idx" :title="label" :value="values.mades[idx]" :max="values.attempteds[idx]" class="bar"/>
+        <ProgressBar 
+            v-for="(label, idx) in labels" 
+            :key="idx" :title="label" 
+            :value="values.mades[idx]" 
+            :max="values.attempteds[idx]" 
+            :colors="colors"
+            class="bar"
+        />
     </div>
 </template>
 
 <script>
 export default {
     name: 'ProgressList',
+    props: {
+		colors: { type: Object, default: {} }
+    },
     computed: {
         labels(){
             return ['field_goals', 'two_pointers', 'three_pointers', 'free_throws']
