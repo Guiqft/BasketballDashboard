@@ -21,8 +21,9 @@ export const state = () => ({
 	// Map Locations
 	usedLocations: [],
 
-	//Players
-	players: []
+	// Players
+	players: [],
+	playersStats: []
 });
 
 export const mutations = {
@@ -46,6 +47,7 @@ export const mutations = {
 		if (state.selectedTeam.length !== 0) {
 			resetStyle(state.selectedTeam);
 		}
+
 		// changing the style of selected team to highlight him
 		highlightStyle(team);
 
@@ -79,5 +81,9 @@ export const mutations = {
 	*/
 	setPlayers (state) {
 		this.$api.getPlayers().then(playersData => state.players = playersData)
+	},
+
+	setPlayersStats (state, team_id) {
+		this.$api.getPlayersStats(team_id).then(statsData => state.playersStats = statsData)
 	},
 };

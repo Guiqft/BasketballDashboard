@@ -35,6 +35,17 @@ export class Service {
 	}
 
 	/**
+	 * Get team by id
+	 */
+	public static async getTeamById(id: String) {
+		const response = await Service.postQuery(
+			`SELECT * FROM teams WHERE team_id = ${id}`
+		);
+
+		return response;
+	}
+
+	/**
 	 * Get team averages
 	 */
 	public static async getTeamAverages(averagesList: Array<any>) {
@@ -69,6 +80,17 @@ export class Service {
 	 */
 	public static async getPlayers() {
 		const response = await Service.postQuery("SELECT * FROM players");
+
+		return response;
+	}
+
+	/**
+	 * Get players stats
+	 */
+	public static async getPlayersStats(team_id: Number) {
+		const response = await Service.postQuery(
+			`SELECT * FROM player_stats WHERE team_id = ${team_id}`
+		);
 
 		return response;
 	}
