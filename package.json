@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@nuxt/typescript-runtime": "^2.0.0",
+		"@nuxtjs/moment": "^1.6.1",
 		"@nuxtjs/svg": "^0.1.12",
 		"@svg-maps/taiwan": "^1.1.0",
 		"@svg-maps/usa": "^1.1.1",
@@ -21,6 +22,7 @@
 		"babel-preset-es2015": "^6.24.1",
 		"core-js": "^3.6.5",
 		"k-progress": "^1.5.0",
+		"moment": "^2.29.1",
 		"node-sass": "^4.14.1",
 		"nuxt": "^2.14.6",
 		"sass-loader": "^10.0.2",

@@ -83,6 +83,17 @@ export class Service {
 
 		return response;
 	}
+
+	/**
+	 * Get players stats
+	 */
+	public static async getPlayersStats(team_id: Number) {
+		const response = await Service.postQuery(
+			`SELECT * FROM player_stats WHERE team_id = ${team_id}`
+		);
+
+		return response;
+	}
 }
 
 export default (context: any, inject: any) => {

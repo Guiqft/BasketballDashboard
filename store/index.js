@@ -21,8 +21,9 @@ export const state = () => ({
 	// Map Locations
 	usedLocations: [],
 
-	//Players
-	players: []
+	// Players
+	players: [],
+	playersStats: []
 });
 
 export const mutations = {
@@ -80,5 +81,9 @@ export const mutations = {
 	*/
 	setPlayers (state) {
 		this.$api.getPlayers().then(playersData => state.players = playersData)
+	},
+
+	setPlayersStats (state, team_id) {
+		this.$api.getPlayersStats(team_id).then(statsData => state.playersStats = statsData)
 	},
 };
