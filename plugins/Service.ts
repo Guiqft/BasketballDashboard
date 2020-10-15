@@ -35,6 +35,17 @@ export class Service {
 	}
 
 	/**
+	 * Get team by id
+	 */
+	public static async getTeamById(id: String) {
+		const response = await Service.postQuery(
+			`SELECT * FROM teams WHERE team_id = ${id}`
+		);
+
+		return response;
+	}
+
+	/**
 	 * Get team averages
 	 */
 	public static async getTeamAverages(averagesList: Array<any>) {

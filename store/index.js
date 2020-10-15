@@ -46,6 +46,7 @@ export const mutations = {
 		if (state.selectedTeam.length !== 0) {
 			resetStyle(state.selectedTeam);
 		}
+
 		// changing the style of selected team to highlight him
 		highlightStyle(team);
 
