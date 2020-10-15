@@ -91,5 +91,9 @@ export const mutations = {
 
 	setFirstPlayer (state, player) {
 		state.firstPlayer = player
+	},
+
+	setSecondPlayer (state, player) {
+		state.secondPlayer = player
 	}
 };

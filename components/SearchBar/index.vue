@@ -2,26 +2,20 @@
 	<div class="container">
 		<input ref="input" v-model.trim="inputValue" class="dropdown-input" type="text" placeholder="Search for Team or Player" />
         <DropDownList @selected-item="resetInput" class="dropdown-list" v-show="inputValue" :lists="lists" :inputValue="inputValue"/>
-	</div>
+    </div>
 </template>
 
 <script>
 export default {
     name: "SearchBar",
+    props:{
+        lists: {type: Object, default: {}},
+    },
     data() {
         return{
             inputValue: ''
         }
     },
-    computed: {
-        lists() {
-            const teams = this.$store.state.teams
-            const players = this.$store.state.players
-
-            return {teams, players}
-        }
-    },
-
     methods:{
         resetInput(){
             this.$refs.input.value = ''

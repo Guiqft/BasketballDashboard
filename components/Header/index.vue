@@ -1,13 +1,21 @@
 <template>
 	<div class="container">
 		<Logo class="logo"/>
-		<SearchBar class="search-bar"/>
+		<SearchBar class="search-bar" :lists="lists"/>
 	</div>
 </template>
 
 <script>
 export default {
-	name: "Header"
+	name: "Header",
+    computed: {
+        lists() {
+            const teams = this.$store.state.teams
+            const players = this.$store.state.players
+
+            return {teams, players}
+        }
+    },
 };
 </script>
 

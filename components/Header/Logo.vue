@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<ArrowLeft class="logo" :fill="colors.primary_color"/>
+		<ArrowLeft class="logo" :stroke="colors.primary_color" stroke-width="2"/>
 	</div>
 </template>
 

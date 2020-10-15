@@ -59,6 +59,16 @@ export default {
                 this.$store.commit('setSelectedTeam', item)
                 this.$store.commit('setSelectedTeamColors', item)
             }
+
+            if(idx === 'players') {
+                const player = this.$store.state.firstPlayer
+                if(player.length === 0)
+                    this.$store.commit('setFirstPlayer', item)
+                else
+                    this.$store.commit('setSecondPlayer', item)
+            }
+
+            this.$emit('selected-item')
         }
     }
 }
