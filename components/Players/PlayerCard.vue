@@ -27,7 +27,7 @@
 
           <div class="player-age">
             {{ getAge(player.birth_date) }}
-            <div class="div">{{hasStats}}</div>
+            <div class="div">yo</div>
           </div>
         </div>
 
@@ -143,6 +143,13 @@ export default {
   }
 }
 
+.player-name{
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .player-infos{
   display: flex;
   align-items: center;
@@ -161,7 +168,6 @@ export default {
   linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
   background-color: #131313;
   background-size: 20px 20px;
-
 }
 
 .player-age{

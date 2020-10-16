@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<input ref="input" v-model.trim="inputValue" class="dropdown-input" type="text" placeholder="Search for Team or Player" />
+		<input ref="input" v-model.trim="inputValue" class="dropdown-input" type="text" :placeholder="title" />
         <DropDownList @selected-item="resetInput" class="dropdown-list" v-show="inputValue" :lists="lists" :inputValue="inputValue"/>
     </div>
 </template>
@@ -9,7 +9,8 @@
 export default {
     name: "SearchBar",
     props:{
-        lists: {type: Object, default: {}},
+        title:{type: String, default: 'Search'},
+        lists: {type: Object, default: {}}
     },
     data() {
         return{
@@ -55,7 +56,7 @@ export default {
 }
 
 .dropdown-list{
-    position: absolute;
-    margin-top: 4vh;
+    position: relative;
+    width: 100%;
 }
 </style>

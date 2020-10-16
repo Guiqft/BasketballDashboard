@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<Logo class="logo"/>
-		<SearchBar class="search-bar" :lists="lists"/>
+		<SearchBar class="search-bar" :lists="lists" title="Search for Team or Player"/>
 	</div>
 </template>
 

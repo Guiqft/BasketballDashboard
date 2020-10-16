@@ -21,7 +21,7 @@
 
 				<div class="team-chart-button">
 					<div class="chart">
-						<RadarChart :labels="labels" :colors="colors"/>
+						<RadarChart :labels="labels" :colors="colors" type="Team"/>
 						<div class="legend">
 							<ChartLegend :title="team.name" :color="colors.primary_color" />
 							<ChartLegend title="Average" color="rgba(0, 0, 0, 0.75)"/>

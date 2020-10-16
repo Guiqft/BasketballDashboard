@@ -62,8 +62,10 @@ export default {
 
             if(idx === 'players') {
                 const player = this.$store.state.firstPlayer
-                if(player.length === 0)
+                if(player.length === 0){
                     this.$store.commit('setFirstPlayer', item)
+                    this.$router.push(`/teams/${this.$store.state.selectedTeam.team_id}`)
+                }
                 else
                     this.$store.commit('setSecondPlayer', item)
             }
@@ -79,7 +81,6 @@ export default {
         display: flex;
         flex-direction: column;
         flex: 1;
-        width: 95%;
         height: 30vh;
         background-color: white;
         z-index: 11;

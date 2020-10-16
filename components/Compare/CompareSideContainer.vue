@@ -3,7 +3,27 @@
     <div class="compare-container">
         <CloseButton class="close-button" :fill="colors.secondary_color" @click="close"/>
         <div class="compare-content" :style="`border-left: 10px solid ${colors.secondary_color}`">
-            <SearchBar :lists="playersWithStats"/>
+            <div class="title">
+                Player Comparasion
+            </div>
+
+            <PlayerInfosCompare class="players" :players="players" />
+
+            <div class="chart-container" v-if="players.second.data.length !== 0" >
+                <RadarChart 
+                    class="chart" 
+                    height="300px" :labels="chartLabels" 
+                    :colors="colors" 
+                    type="Player" 
+                    :players="players"
+                    labelColor="black"
+                />
+            
+                <div class="legend">
+                    <ChartLegend :title="`${players.first.data.first_name} ${players.first.data.last_name}`" :color="colors.primary_color" textColor="black"/>
+                    <ChartLegend :title="`${players.second.data.first_name} ${players.second.data.last_name}`" color="rgba(0, 0, 0, 0.75)" textColor="black"/>
+                </div>
+            </div>
         </div>
     </div>
 </SlideFade>
@@ -19,32 +39,28 @@ export default {
     },
     computed:{
         players(){
-            return {first: this.$store.state.firstPlayer, second: this.$store.state.secondPlayer}
+            return {
+                first: {
+                    data: this.$store.state.firstPlayer,
+                    stats: this.$store.state.playersStats.filter(stat => stat.player_id === this.$store.state.firstPlayer.player_id)
+                }, 
+                second: {
+                    data: this.$store.state.secondPlayer,
+                    stats: this.$store.state.playersStats.filter(stat => stat.player_id === this.$store.state.secondPlayer.player_id)
+                }
+            }
         },
         colors(){
             return this.$store.state.selectedTeamColors
         },
-        playersWithStats(){
-            const players = this.$store.state.players
-            const playersStats = this.$store.state.playersStats
-
-            const result = []
-
-            players.map(player => {
-                playersStats.map(stat => {
-                    if(stat.player_id === player.player_id)
-                        result.push(player)
-                })
-            })
-
-            return {
-                players: result
-            }
-        }
+        chartLabels(){
+            return ['assists', 'steals', 'turnovers', 'personal_fouls', 'points', 'blocked_shots']
+        },
     },
     methods: {
         close(){
             this.$store.commit('setFirstPlayer', [])
+            this.$store.commit('setSecondPlayer', [])
         }
     }
 }
@@ -52,8 +68,8 @@ export default {
 
 <style scoped>
 .compare-container{
-    position: fixed;
     display: flex;
+    position: fixed;
     right: 0;
     width: 30%;
     height: 100vh;
@@ -70,6 +86,8 @@ export default {
 
 .compare-content{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: 1;
     width: 100%;
     background-color: white;
@@ -84,5 +102,35 @@ export default {
     -webkit-box-shadow: 0px 0px 300px 100px rgba(173,173,173,1);
     -moz-box-shadow: 0px 0px 300px 100px rgba(173,173,173,1);
     box-shadow: 0px 0px 300px 100px rgba(173,173,173,1);
+}
+
+.title {
+    margin-top: 5%;
+    margin-bottom: 15%;
+    font-weight: 400;
+    font-size: 3vh;
+}
+
+.players{
+    height: 40%;
+}
+
+.chart-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.chart{
+    flex: 1;
+    width: 100%;
+}
+
+.legend {
+    position: relative;
+    top: -10%;
+    width: 40%;
 }
 </style>
