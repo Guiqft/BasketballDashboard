@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ArrowLeft from '@/static/logo.svg?inline'
+import ArrowLeft from '@/static/Logo.svg?inline'
 
 export default {
 	name: 'Logo',
