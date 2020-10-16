@@ -1,7 +1,7 @@
 <template>
     <div class="legend-container">
         <div class="color" :style="`background-color: ${color}`"/>
-        <div class="text">
+        <div class="text" :style="`color: ${textColor}`">
             {{title}}
         </div>
     </div>
@@ -12,7 +12,8 @@ export default {
     name: 'ChartLegend',
     props: {
         title: {type: String, default: 'Legend'},
-        color: {type: String, default: 'white'}
+        color: {type: String, default: 'white'},
+        textColor: {type: String, default: 'white'}
     }
 }
 </script>

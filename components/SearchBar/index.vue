@@ -1,27 +1,22 @@
 <template>
 	<div class="container">
-		<input ref="input" v-model.trim="inputValue" class="dropdown-input" type="text" placeholder="Search for Team or Player" />
+		<input ref="input" v-model.trim="inputValue" class="dropdown-input" type="text" :placeholder="title" />
         <DropDownList @selected-item="resetInput" class="dropdown-list" v-show="inputValue" :lists="lists" :inputValue="inputValue"/>
-	</div>
+    </div>
 </template>
 
 <script>
 export default {
     name: "SearchBar",
+    props:{
+        title:{type: String, default: 'Search'},
+        lists: {type: Object, default: {}}
+    },
     data() {
         return{
             inputValue: ''
         }
     },
-    computed: {
-        lists() {
-            const teams = this.$store.state.teams
-            const players = this.$store.state.players
-
-            return {teams, players}
-        }
-    },
-
     methods:{
         resetInput(){
             this.$refs.input.value = ''
@@ -61,7 +56,7 @@ export default {
 }
 
 .dropdown-list{
-    position: absolute;
-    margin-top: 4vh;
+    position: relative;
+    width: 100%;
 }
 </style>

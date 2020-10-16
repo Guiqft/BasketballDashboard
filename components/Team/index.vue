@@ -1,36 +1,38 @@
 <template>
-	<div 
-		class="container"
-		:style="`
-			border-left: 5px solid ${colors.primary_color};
-		`"
-	>
-		<div class="title">
-			Team Stats
-		</div>
+	<SlideFade>
+		<div 
+			class="container"
+			:style="`
+				border-left: 5px solid ${colors.primary_color};
+			`"
+		>
+			<div class="title">
+				Team Stats
+			</div>
 
-		<div class="list-title">
-			made / attempts
-		</div>
-		<div class="progress-list">
-			<ProgressList :colors="colors"/>
-		</div>
-		<div class="team-infos">
-			<CardInfo :team="team" :colors="colors"/>
+			<div class="list-title">
+				made / attempts
+			</div>
+			<div class="progress-list">
+				<ProgressList :colors="colors"/>
+			</div>
+			<div class="team-infos">
+				<CardInfo :team="team" :colors="colors"/>
 
-			<div class="team-chart-button">
-				<div class="chart">
-					<RadarChart :labels="labels" :colors="colors"/>
-					<div class="legend">
-						<ChartLegend :title="team.name" :color="colors.primary_color" />
-						<ChartLegend title="Average" color="rgba(0, 0, 0, 0.75)"/>
+				<div class="team-chart-button">
+					<div class="chart">
+						<RadarChart :labels="labels" :colors="colors" type="Team"/>
+						<div class="legend">
+							<ChartLegend :title="team.name" :color="colors.primary_color" />
+							<ChartLegend title="Average" color="rgba(0, 0, 0, 0.75)"/>
+						</div>
 					</div>
-				</div>
 
-				<ButtonLink class="button" title="See Players" width="80%" :to="`teams/${team.team_id}`"/>
+					<ButtonLink class="button" title="See Players" width="80%" :to="`teams/${team.team_id}`"/>
+				</div>
 			</div>
 		</div>
-	</div>
+	</SlideFade>
 </template>
 
 <script>

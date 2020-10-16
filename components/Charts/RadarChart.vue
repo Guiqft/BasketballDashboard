@@ -3,7 +3,7 @@
 		<apexcharts
 			class="chart"
 			type="radar"
-			height="300px"
+			:height="height"
 			:options="chartOptions"
 			:series="series"
 		/>
@@ -15,35 +15,53 @@ export default {
 	name: "RadarChart",
 	props: {
 		labels: { type: Array, default: []},
-		colors: { type: Object, default: {} }
+		colors: { type: Object, default: {} },
+		type: {type: String, default: "Team"},
+		height: {type: String, default: '300px'},
+		players: {type: Object},
+		labelColor: {type: String, default: 'white'}
 	},
 
 	computed: {
-		values() {
-			const teamStats = this.$store.state.selectedTeamStats
+		primaryValues() {
+			let data = {} 
+
+			if(this.$props.type === 'Team')
+				data = this.$store.state.selectedTeamStats
+			else
+				data = this.$props.players.first.stats[0]
 
 			const values = []
 
-			this.$props.labels.map(el => values.push(teamStats[el]))
+			this.$props.labels.map(el => values.push(data[el]))
 
 			return values
 		},
 
-		averages() {
-			const teamsAverages = this.$store.state.teamsAverages;
+		secondaryValues() {
+			let data = {} 
 
-			return  teamsAverages
+			if(this.$props.type === 'Team')
+				return this.$store.state.teamsAverages;
+			else
+				data = this.$props.players.second.stats[0]
+
+			const values = []
+
+			this.$props.labels.map(el => values.push(data[el]))
+
+			return values
 		},
 	
 		series() {
 			const series = [
 				{
-					name: "Team Stats",
-					data: this.values
+					name: "Primary Stats",
+					data: this.primaryValues
 				},
 				{
-					name: "Average Stats",
-					data: this.averages
+					name: "Secondary Stats",
+					data: this.secondaryValues
 				}
 			]
 
@@ -77,27 +95,19 @@ export default {
 				labels: this.$props.labels,
 
 				markers: {
-					size: 2
+					size: 0
 				},
 
 				legend: {
 					show: false
 				},
+				stroke: {
+					colors: [ "#000", this.$props.colors.primary_color],
+				},
 				fill: {
 					colors: [ "#000", this.$props.colors.primary_color],
-					opacity: 0.75,
-					type: "solid",
-					gradient: {
-						shade: "dark",
-						type: "horizontal",
-						shadeIntensity: 0.1,
-						gradientToColors: undefined,
-						inverseColors: true,
-						opacityFrom: 0.2,
-						opacityTo: 0.8,
-						stops: [0, 50, 100],
-						colorStops: []
-					}
+					opacity: [0.35, 0.45],
+					type: ['solid', 'solid']
 				},
 				dataLabels: {
 					enabled: false
@@ -127,10 +137,10 @@ export default {
 						//this remove '_' from label and capitalize it
 						formatter: (label) => label.replace('_', ' ').replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase()))),
 						style: {
-							colors: ["white", "white", "white", "white", "white", "white"],
-							fontSize: "10px",
+							colors: [this.$props.labelColor, this.$props.labelColor, this.$props.labelColor, this.$props.labelColor, this.$props.labelColor, this.$props.labelColor],
+							fontSize: "60%",
 							fontFamily: "Helvetica, Arial, sans-serif",
-							fontWeight: 400,
+							fontWeight: 600,
 							cssClass: "apexcharts-xaxis-label"
 						},
 					}

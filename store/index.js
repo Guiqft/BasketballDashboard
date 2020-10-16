@@ -12,10 +12,10 @@ export const state = () => ({
 	selectedTeam: [],
 	selectedTeamStats: [],
 	selectedTeamColors: {
-		primary_color: null,
-		secondary_color: null,
-		tertiary_color: null,
-		quaternary_color: null
+		primary_color: 'black',
+		secondary_color: 'black',
+		tertiary_color: 'black',
+		quaternary_color: 'black'
 	},
 
 	// Map Locations
@@ -23,7 +23,9 @@ export const state = () => ({
 
 	// Players
 	players: [],
-	playersStats: []
+	playersStats: [],
+	firstPlayer: [],
+	secondPlayer: []
 });
 
 export const mutations = {
@@ -83,7 +85,15 @@ export const mutations = {
 		this.$api.getPlayers().then(playersData => state.players = playersData)
 	},
 
-	setPlayersStats (state, team_id) {
-		this.$api.getPlayersStats(team_id).then(statsData => state.playersStats = statsData)
+	setPlayersStats (state) {
+		this.$api.getPlayersStats().then(statsData => state.playersStats = statsData)
 	},
+
+	setFirstPlayer (state, player) {
+		state.firstPlayer = player
+	},
+
+	setSecondPlayer (state, player) {
+		state.secondPlayer = player
+	}
 };

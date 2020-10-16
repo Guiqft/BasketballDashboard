@@ -1,14 +1,17 @@
 <template>
 	<div class="team-container">
 		<TeamLogo />
-		<div class="team-content">
+		<div class="team-content" :style="`opacity: ${firstPlayer.length !== 0 ? '0.2' : '1'}`">
 			<div class="header">
 				<ButtonBack class="back-button" :color="teamColors.primary_color"/>
 				<div class="title" :style="`color: ${teamColors.primary_color}`">{{ team.name }} Players</div>
+				<Logo class="logo"/>
 			</div>
 
 			<PlayersGrid :players="players" class="grid" />
 		</div>
+		
+		<CompareSideContainer v-if="firstPlayer.length !== 0"/>
 	</div>
 </template>
 
@@ -32,6 +35,9 @@ export default {
 		},
 		teamColors() {
 			return this.$store.state.selectedTeamColors;
+		},
+		firstPlayer() {
+			return this.$store.state.firstPlayer;
 		}
 	}
 };
@@ -59,8 +65,10 @@ export default {
 
 .header {
 	display: flex;
+	flex: 1;
 	width: 100%;
 	align-items: center;
+	justify-content: center;
 }
 
 .title {
@@ -68,6 +76,10 @@ export default {
     font-weight: 600;
 	font-size: 3vh;
     filter: brightness(100%)
+}
+
+.logo {
+	margin-left: 30%;
 }
 
 .grid {
